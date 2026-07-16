@@ -1,1202 +1,1693 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
-<!--<![endif]-->
-
+<html lang="en">
 <head>
-    <!-- Basic Page Needs -->
-    <meta charset="utf-8">
-    <!--[if IE ]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
-    <title>Jayden - Portfolio HTML Template</title>
-    <meta name="description" content="Jayden">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abuzar Yousaf — Social Media Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A1B23;
+    --ink-soft:#54566A;
+    --paper:#F2F0EA;
+    --paper-raise:#FFFFFF;
+    --coral:#FF5568;
+    --amber:#FFB238;
+    --grape:#4B3F72;
+    --surface-dark:#15141C;
+    --line:rgba(26,27,35,0.12);
+    --radius:14px;
+    --max:1120px;
+  }
 
-    <meta name="keywords" content="">
-    <meta name="author" content="themesflat.com">
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
 
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16.5px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
 
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" type="text/css" href="asset/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/bootstrap-select.min.css">
+  h1,h2,h3,h4{
+    font-family:'Bricolage Grotesque',sans-serif;
+    margin:0;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+    text-wrap:balance;
+  }
+  /* clear top-to-bottom heading hierarchy */
+  h1{font-weight:800;}
+  h2{font-weight:700;}
+  h3{font-weight:650;}
+  h4{font-weight:600; letter-spacing:-0.01em;}
 
-    <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="asset/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/swiper-bundle.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/odometer.min.css">
-    <link rel="stylesheet" type="text/css" href="asset/css/lightbox.min.css">
+  .mono{font-family:'JetBrains Mono',monospace;}
 
-    <!-- Animation Style -->
-    <link rel="stylesheet" type="text/css" href="asset/css/animate.min.css">
+  a{color:inherit;text-decoration:none;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--grape); outline-offset:3px;}
 
-    <!-- Font -->
-    <link rel="stylesheet" href="asset/font/fonts.css">
-    
-    <!-- Icon -->
-    <link rel="stylesheet" type="text/css" href="asset/icons/icomoon/style.css">
-    
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
 
-    <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="asset/images/logo/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="asset/images/logo/favicon.png">
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,240,234,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:68px; position:relative;}
+  .brand{font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:1.25rem;}
+  .brand span{color:var(--coral);}
+  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    font-size:0.88rem; font-weight:500; color:var(--ink-soft);
+    padding:6px 2px; border-bottom:2px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .nav-links a:hover{color:var(--ink); border-color:var(--coral);}
+  .nav-right{display:flex; align-items:center; gap:14px;}
+  .nav-cta{
+    font-family:'JetBrains Mono',monospace; font-size:0.78rem; font-weight:500;
+    background:var(--ink); color:var(--paper); padding:9px 16px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .nav-toggle{
+    display:none; width:38px; height:38px; border-radius:9px; border:1.5px solid var(--ink);
+    background:transparent; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:4px;
+  }
+  .nav-toggle span{display:block; width:18px; height:2px; background:var(--ink); border-radius:2px; transition:transform .2s ease, opacity .2s ease;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
+  /* ---------- HERO ---------- */
+  .hero{padding:76px 0 60px;}
+  .hero .wrap{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--ink-soft);
+    background:var(--paper-raise); border:1px solid var(--line); padding:6px 12px; border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:"●"; color:var(--coral); font-size:0.6rem;}
+  .hero h1{font-size:clamp(2.6rem, 5.4vw, 4.1rem); line-height:1.02; font-weight:800;}
+  .hero .role{
+    display:block; margin-top:14px; font-size:clamp(1.05rem,2vw,1.35rem); font-weight:500;
+    color:var(--ink-soft); font-family:'Bricolage Grotesque',sans-serif; line-height:1.4;
+  }
+  .hero p.bio{margin:24px 0 32px; max-width:50ch; color:var(--ink-soft); font-size:1.02rem;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:0.95rem;
+    padding:13px 24px; border-radius:999px; display:inline-flex; align-items:center; gap:8px;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 22px rgba(26,27,35,0.22);}
+  .btn-ghost{border:1.5px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{transform:translateY(-2px); background:var(--paper-raise);}
+
+  /* ---------- HERO PHOTO ---------- */
+  .hero-photo{position:relative; width:100%; max-width:340px; margin-left:auto;}
+  .hero-photo::before{
+    content:""; position:absolute; inset:18px -18px -18px 18px;
+    background:var(--amber); border-radius:20px; z-index:0;
+  }
+  .photo-frame{
+    position:relative; z-index:1; aspect-ratio:4/5; min-height:280px; border-radius:20px; overflow:hidden;
+    border:1.5px dashed rgba(26,27,35,0.22);
+    background:repeating-linear-gradient(135deg, var(--paper-raise), var(--paper-raise) 10px, var(--paper) 10px, var(--paper) 20px);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    text-align:center; padding:22px; transition:border-color .2s ease;
+  }
+  .photo-frame:hover{border-color:var(--coral);}
+  .photo-frame img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .photo-frame .c-icon{
+    width:56px; height:56px; border-radius:50%; background:var(--paper-raise); border:1.5px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:1.4rem; position:relative; z-index:1;
+  }
+  .photo-frame .c-cat{font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.03em; color:var(--coral); position:relative; z-index:1;}
+  .photo-frame h4{font-size:0.95rem; font-weight:600; color:var(--ink-soft); position:relative; z-index:1;}
+  .photo-frame .c-hint{font-size:0.72rem; color:var(--ink-soft); opacity:0.7; max-width:22ch; position:relative; z-index:1;}
+
+  /* ---------- STATS BAR ---------- */
+  .stats{background:var(--ink); color:var(--paper); padding:38px 0;}
+  .stats .wrap{display:grid; grid-template-columns:repeat(6,1fr); gap:24px; text-align:center;}
+  .stat b{display:block; font-family:'Bricolage Grotesque',sans-serif; font-size:clamp(1.4rem,2.6vw,1.9rem); color:var(--amber);}
+  .stat span{font-size:0.72rem; color:rgba(242,240,234,0.72); font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:680px; margin-bottom:48px;}
+  .section-head .tag{
+    font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:var(--coral); font-weight:600;
+    display:flex; align-items:center; gap:10px; margin-bottom:14px; letter-spacing:0.04em;
+  }
+  .section-head .tag::after{content:""; height:1px; width:36px; background:var(--coral); opacity:0.5;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem); font-weight:800;}
+  .section-head p{color:var(--ink-soft); margin-top:14px; font-size:1.02rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+  .about-grid p{color:var(--ink-soft); margin:0 0 16px;}
+  .lang-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .lang-list li{display:flex; justify-content:space-between; font-size:0.92rem; border-bottom:1px dashed var(--line); padding-bottom:8px;}
+  .lang-list span{color:var(--ink-soft); font-family:'JetBrains Mono',monospace; font-size:0.78rem;}
+  .edu-card{background:var(--paper-raise); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; margin-bottom:12px;}
+  .edu-card h4{font-size:0.98rem;}
+  .edu-card .when{font-family:'JetBrains Mono',monospace; font-size:0.74rem; color:var(--coral);}
+  .edu-card .where{font-size:0.85rem; color:var(--ink-soft); margin-top:2px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .service{
+    background:var(--paper-raise); border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px 20px; transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(26,27,35,0.08);}
+  .service .num{font-family:'JetBrains Mono',monospace; color:var(--amber); font-size:0.76rem; display:block; margin-bottom:14px;}
+  .service h3{font-size:1rem; margin-bottom:8px; line-height:1.25;}
+  .service p{color:var(--ink-soft); font-size:0.87rem; margin:0;}
+
+  /* ---------- PROCESS ---------- */
+  .process-row{display:flex; justify-content:space-between; gap:18px; position:relative;}
+  .process-row::before{content:""; position:absolute; top:23px; left:0; right:0; height:1px; background:var(--line); z-index:0;}
+  .process-step{position:relative; z-index:1; flex:1; display:flex; flex-direction:column; gap:14px;}
+  .process-num{
+    width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono',monospace; font-weight:600; font-size:0.85rem; color:#fff;
+  }
+  .process-step:nth-child(1) .process-num{background:var(--coral);}
+  .process-step:nth-child(2) .process-num{background:var(--amber); color:var(--ink);}
+  .process-step:nth-child(3) .process-num{background:var(--grape);}
+  .process-step:nth-child(4) .process-num{background:var(--ink);}
+  .process-step:nth-child(5) .process-num{background:var(--coral);}
+  .process-step h4{font-size:0.98rem;}
+  .process-step p{font-size:0.85rem; color:var(--ink-soft); margin:0;}
+
+  /* ---------- EXPERIENCE (post cards) ---------- */
+  .timeline{display:flex; flex-direction:column; gap:22px;}
+  .post{
+    background:var(--paper-raise); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .post-head{display:flex; align-items:center; gap:12px; padding:16px 20px; border-bottom:1px solid var(--line);}
+  .post-avatar{
+    width:38px; height:38px; border-radius:10px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Bricolage Grotesque',sans-serif; font-weight:700; color:#fff; font-size:0.85rem;
+  }
+  .post-head h4{font-size:0.98rem;}
+  .post-head .handle{font-family:'JetBrains Mono',monospace; font-size:0.76rem; color:var(--ink-soft);}
+  .post-when{margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--ink-soft); white-space:nowrap;}
+  .post-body{padding:18px 20px 6px;}
+  .post-body ul{margin:0; padding-left:18px; color:var(--ink-soft); font-size:0.92rem; display:flex; flex-direction:column; gap:7px;}
+  .post-foot{
+    display:flex; gap:18px; flex-wrap:wrap; padding:14px 20px 18px;
+    font-family:'JetBrains Mono',monospace; font-size:0.74rem; color:var(--ink-soft);
+  }
+  .post-foot b{color:var(--ink);}
+
+  /* ---------- PORTFOLIO ---------- */
+  .tabs{display:flex; gap:10px; margin-bottom:28px;}
+  .tab-btn{
+    font-family:'JetBrains Mono',monospace; font-size:0.82rem; padding:9px 18px; border-radius:999px;
+    border:1.5px solid var(--ink); background:transparent; cursor:pointer; color:var(--ink);
+    transition:background .2s ease, color .2s ease;
+  }
+  .tab-btn.active{background:var(--ink); color:var(--paper);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:grid;}
+  .brand-grid{grid-template-columns:repeat(3,1fr); gap:14px;}
+  .brand-card{
+    background:var(--paper-raise); border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:10px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .brand-card:hover{border-color:var(--coral); transform:translateY(-2px);}
+  .brand-card span.name{font-size:0.92rem; font-weight:500;}
+  .brand-card .arrow{color:var(--coral); font-size:1.1rem; flex:none;}
+  /* Creatives (images) — 4 per row on desktop */
+  .creative-grid{grid-template-columns:repeat(4,1fr); gap:16px;}
+  .creative-card{
+    position:relative; border-radius:14px; overflow:hidden; aspect-ratio:4/5;
+    background:repeating-linear-gradient(135deg, var(--paper-raise), var(--paper-raise) 10px, var(--paper) 10px, var(--paper) 20px);
+    border:1.5px dashed rgba(26,27,35,0.22);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+    text-align:center; padding:18px; transition:border-color .2s ease, transform .2s ease;
+  }
+  .creative-card:hover{border-color:var(--coral); transform:translateY(-3px);}
+  .creative-card .c-icon{
+    width:40px; height:40px; border-radius:50%; background:var(--paper-raise); border:1.5px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:1.05rem;
+  }
+  .creative-card .c-cat{font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.03em; color:var(--coral);}
+  .creative-card h4{font-size:0.9rem; font-weight:600; color:var(--ink-soft);}
+  .creative-card .c-hint{font-size:0.7rem; color:var(--ink-soft); opacity:0.7;}
+  .creative-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+
+  /* Videos — 3 per row on desktop, vertical reel ratio */
+  .video-grid{grid-template-columns:repeat(3,1fr); gap:18px;}
+  .video-card{
+    position:relative; border-radius:14px; overflow:hidden; aspect-ratio:9/16;
+    background:repeating-linear-gradient(135deg, var(--paper-raise), var(--paper-raise) 10px, var(--paper) 10px, var(--paper) 20px);
+    border:1.5px dashed rgba(26,27,35,0.22);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    text-align:center; padding:18px; transition:border-color .2s ease, transform .2s ease;
+  }
+  .video-card:hover{border-color:var(--coral); transform:translateY(-3px);}
+  .video-card video{width:100%; height:100%; object-fit:cover; position:absolute; inset:0;}
+  .video-card .c-icon{
+    width:44px; height:44px; border-radius:50%; background:var(--paper-raise); border:1.5px solid var(--line);
+    display:flex; align-items:center; justify-content:center; font-size:1.15rem; position:relative; z-index:1;
+  }
+  .video-card .c-cat{font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.03em; color:var(--coral); position:relative; z-index:1;}
+  .video-card h4{font-size:0.9rem; font-weight:600; color:var(--ink-soft); position:relative; z-index:1;}
+  .video-card .c-hint{font-size:0.7rem; color:var(--ink-soft); opacity:0.7; position:relative; z-index:1;}
+
+  /* Banners — 1920x1000 wide landscape ratio */
+  .banner-grid{grid-template-columns:repeat(2,1fr); gap:18px;}
+  .banner-card{
+    position:relative; border-radius:14px; overflow:hidden; aspect-ratio:1920/1000;
+    background:repeating-linear-gradient(135deg, var(--paper-raise), var(--paper-raise) 10px, var(--paper) 10px, var(--paper) 20px);
+    border:1.5px dashed rgba(26,27,35,0.22);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+    text-align:center; padding:18px; transition:border-color .2s ease, transform .2s ease;
+  }
+  .banner-card:hover{border-color:var(--coral); transform:translateY(-3px);}
+  .banner-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;}
+
+  /* Logos — 1080x1080 square, contain so nothing gets cropped (transparent-friendly), no side padding like creatives */
+  .logo-grid{grid-template-columns:repeat(4,1fr); gap:14px;}
+  .logo-card{
+    position:relative; border-radius:14px; overflow:hidden; aspect-ratio:1/1;
+    background:var(--paper-raise);
+    border:1.5px dashed rgba(26,27,35,0.22);
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .logo-card:hover{border-color:var(--coral); transform:translateY(-3px);}
+  .logo-card img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block;}
+
+  .creative-note{
+    background:var(--paper-raise); border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px 20px; margin-bottom:22px; font-size:0.88rem; color:var(--ink-soft); line-height:1.7;
+  }
+  .creative-note b{color:var(--ink);}
+  .creative-note .mono{
+    display:inline-block; background:var(--paper); border:1px solid var(--line); padding:2px 7px;
+    border-radius:5px; font-size:0.76rem; word-break:break-all; margin:2px 0; color:var(--ink);
+  }
+
+  .services-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:36px;}
+  .services-tags span{
+    font-family:'JetBrains Mono',monospace; font-size:0.76rem; padding:8px 14px;
+    background:var(--paper); border:1px solid var(--line); border-radius:999px; color:var(--ink-soft);
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-wrap{display:flex; flex-wrap:wrap; gap:12px;}
+  .pill{
+    background:var(--paper-raise); border:1px solid var(--line); padding:11px 18px; border-radius:999px;
+    font-size:0.9rem; font-weight:500;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--surface-dark); color:var(--paper); border-radius:24px; margin:0 28px; padding:64px 48px;}
+  .contact-inner{max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center;}
+  .contact h2{color:#fff; font-size:clamp(1.8rem,3.4vw,2.5rem);}
+  .contact p{color:rgba(242,240,234,0.72); max-width:42ch; margin-top:14px;}
+  .contact-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px;}
+  .contact-list a{display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid rgba(242,240,234,0.18); font-size:0.98rem;}
+  .contact-list span.label{font-family:'JetBrains Mono',monospace; font-size:0.72rem; color:var(--amber);}
+
+  footer{padding:26px 0; text-align:center; font-family:'JetBrains Mono',monospace; font-size:0.76rem; color:var(--ink-soft);}
+
+  /* ---------- RESPONSIVE ---------- */
+  /* Large tablets / small laptops */
+  @media (max-width:1100px){
+    .wrap{padding:0 22px;}
+    .services-grid{grid-template-columns:repeat(3,1fr);}
+    .creative-grid{grid-template-columns:repeat(3,1fr) !important;}
+    .video-grid{grid-template-columns:repeat(3,1fr) !important;}
+    .banner-grid{grid-template-columns:repeat(2,1fr) !important;}
+    .logo-grid{grid-template-columns:repeat(4,1fr) !important;}
+  }
+
+  /* Tablets */
+  @media (max-width:860px){
+    .nav-links{
+      display:none; position:absolute; top:calc(100% + 1px); left:0; right:0;
+      flex-direction:column; gap:0; background:var(--paper-raise);
+      border-bottom:1px solid var(--line); box-shadow:0 14px 24px rgba(26,27,35,0.08);
+      padding:6px 22px;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links li{width:100%;}
+    .nav-links a{display:block; padding:14px 2px; border-bottom:1px solid var(--line);}
+    .nav-links li:last-child a{border-bottom:none;}
+    .nav-toggle{display:flex;}
+
+    .hero{padding:52px 0 44px;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-photo{margin:36px auto 0;}
+    .stats .wrap{grid-template-columns:repeat(3,1fr); row-gap:26px;}
+    .about-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .brand-grid{grid-template-columns:repeat(2,1fr) !important;}
+    .creative-grid{grid-template-columns:repeat(2,1fr) !important;}
+    .video-grid{grid-template-columns:repeat(2,1fr) !important;}
+    .banner-grid{grid-template-columns:repeat(2,1fr) !important;}
+    .logo-grid{grid-template-columns:repeat(3,1fr) !important;}
+    .contact-inner{grid-template-columns:1fr;}
+    .contact{padding:44px 26px; margin:0 16px;}
+    .process-row{flex-direction:column; gap:28px;}
+    .process-row::before{display:none;}
+    section{padding:64px 0;}
+  }
+
+  /* Phones */
+  @media (max-width:600px){
+    .wrap{padding:0 18px;}
+    .services-grid{grid-template-columns:1fr;}
+    .brand-grid{grid-template-columns:1fr !important;}
+    .creative-grid{grid-template-columns:1fr !important;}
+    .video-grid{grid-template-columns:1fr !important;}
+    .banner-grid{grid-template-columns:1fr !important;}
+    .logo-grid{grid-template-columns:repeat(2,1fr) !important;}
+    .hero-ctas{flex-direction:column; align-items:stretch;}
+    .stats .wrap{grid-template-columns:1fr 1fr;}
+    .tabs{flex-wrap:wrap;}
+    .tab-btn{flex:1 1 auto; text-align:center;}
+    .contact{padding:36px 20px;}
+    .contact-list a{flex-wrap:wrap; gap:6px;}
+  }
+
+  /* Small phones */
+  @media (max-width:380px){
+    .stats .wrap{grid-template-columns:1fr;}
+    .hero h1{font-size:2.15rem;}
+  }
+</style>
 </head>
+<body>
 
-<body class="counter-scroll">
-
-    <!-- Start Wrapper -->
-    <div id="wrapper">
-
-        <video class="body-overlay" muted autoplay loop playsinline>
-            <source src="asset/images/bg-3d/video2.mp4" type="video/mp4">
-        </video>
-
-        <!-- tf-btn-menu -->
-        <div class="tf-btn-menu">
-           <img src="asset/icons/dashboard.svg" alt="">
-        </div>
-        <!-- /tf-btn-menu -->
-
-        <!-- tf-sidebar-menu -->
-        <div class="tf-sidebar-menu tf-canvas">
-            <div class="overlay"></div>
-            <div class="sidebar-menu-inner">
-                <div class="sidebar-wrap">
-                    <div class="sidebar-heading">
-                        <div class="heading text-body-1 dot-before">Menu</div>
-                        <span class="close-canvas">
-                            <i class="icon icon-times-solid"></i>
-                        </span>
-                    </div>
-                    <ul class="sidebar-nav nav-scroll">
-                        <li>
-                            <a class="scroll-to active" href="#home">
-                                <i class="icon icon-home-solid"></i><span class="text-body-2">Home</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#experience">
-                                <i class="icon icon-toolbox-solid"></i><span class="text-body-2">Experience</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#works">
-                                <i class="icon icon-tasks-solid"></i><span class="text-body-2">Selected Works</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#services">
-                                <i class="icon icon-stream-solid"></i><span class="text-body-2">Services</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#about">
-                                <i class="icon icon-user-solid"></i><span class="text-body-2">About</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#testimonial">
-                                <i class="icon icon-poll-h-solid"></i><span class="text-body-2">Testimonial</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#partners">
-                                <i class="icon icon-user-friends-solid"></i><span class="text-body-2">Partners</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#awards">
-                                <i class="icon icon-ring-solid"></i><span class="text-body-2">Awards</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#pricing">
-                                <i class="icon icon-tags-solid"></i><span class="text-body-2">Pricing</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#faqs">
-                                <i class="icon icon-comment-alt-solid"></i><span class="text-body-2">FAQs</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="scroll-to" href="#contact">
-                                <i class="icon icon-envelope-solid"></i><span class="text-body-2">Contact</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="sidebar-social">
-                    <div class="heading text-body-1 dot-before">Social Network</div>
-                    <ul class="social-links">
-                        <li>
-                            <a href="#"><i class="icon icon-twitter-x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon icon-dribbble"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon icon-instagram"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="icon icon-facebook-f"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- /tf-sidebar-menu -->
-
-        <!-- tf-setting-color -->
-        <div class="tf-setting-color tf-canvas">
-            <div class="btn-setting-color">
-                <i class="icon icon-cog-solid"></i>
-            </div>
-            <div class="inner">
-                <div class="overlay"></div>
-                <div class="setting-color-option">
-                    <span class="close-canvas">
-                        <i class="icon icon-times-solid"></i>
-                    </span>
-                    <h2 class="heading">Configuration</h2>
-                    <div class="settings-color-option-inner">
-                        <h6 class="title">COLORS</h6>
-                        <div class="settings-color list-choose">
-                            <a href="javascript:void(0);" class="choose-item active"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                            <a href="javascript:void(0);" class="choose-item"></a>
-                        </div>
-    
-                        <h6 class="title">THREE DIMENSIONAL SHAPES</h6>
-                        <ul class="settings-themes">
-                            <li><a href="index.html">Liquids Wavy</a></li>
-                            <li><a href="home1-v2.html" class="active">3D Abstract Ball</a></li>
-                            <li><a href="home1-v3.html">Water Waves</a></li>
-                            <li><a href="home1-v4.html">Earth Lines Sphere</a></li>
-                            <li><a href="home1-v5.html">Solid Color</a></li>
-                            <li><a href="home1-v6.html">Simple Strings</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /tf-setting-color -->
-
-        <!-- right-nav -->
-        <ul class="right-nav nav-scroll">
-            <li>
-                <a class="scroll-to active" href="#home">
-                    <i class="icon icon-home-solid"></i>
-                    <span class="tooltip text-body-3">Home</span>
-                </a>
-            </li>
-            <li>
-                <a class="scroll-to" href="#works">
-                    <i class="icon icon-tasks-solid"></i>
-                    <span class="tooltip text-body-3">Works</span>
-                </a>
-            </li>
-            <li>
-                <a class="scroll-to" href="#services">
-                    <i class="icon icon-stream-solid"></i>
-                    <span class="tooltip text-body-3">Services</span>
-                </a>
-            </li>
-            <li>
-                <a class="scroll-to" href="#about">
-                    <i class="icon icon-user-solid"></i>
-                    <span class="tooltip text-body-3">About</span>
-                </a>
-            </li>
-            <li>
-                <a class="scroll-to" href="#testimonial">
-                    <i class="icon icon-poll-h-solid"></i>
-                    <span class="tooltip text-body-3">Testimonial</span>
-                </a>
-            </li>
-            <li>
-                <a class="scroll-to" href="#pricing">
-                    <i class="icon icon-tags-solid"></i>
-                    <span class="tooltip text-body-3">Pricing</span>
-                </a>
-            </li>
-            <li>
-                <a class="scroll-to" href="#faqs">
-                    <i class="icon icon-comment-alt-solid"></i>
-                    <span class="tooltip text-body-3">FAQs</span>
-                </a>
-            </li>
-            <li>
-                <a class="scroll-to" href="#contact">
-                    <i class="icon icon-envelope-solid"></i>
-                    <span class="tooltip text-body-3">Contact</span>
-                </a>
-            </li>
-        </ul>
-        <!-- /right-nav -->
-
-        <!-- left-sidebar -->
-        <div class="left-sidebar">
-            <div class="heading">
-                <img src="asset/images/logo/logo-1.svg" alt="">
-                <div class="box-status">
-                    <div class="dot"></div>
-                    <div class="text-body-1">Available for <span class="number">3 projects</span></div>
-                </div>
-            </div>
-            <div class="image">
-               <div class="avatar avatar-wrap">
-                    <img class="lazyload avatar-bg" src="asset/images/avatar/avatar-full.png" data-src="asset/images/avatar/avatar-full.png" alt="">
-                    <img class="lazyload avatar-no-bg" style="display: none;" src="asset/images/avatar/avatar-1.png" data-src="asset/images/avatar/avatar-1.png" alt="">
-                </div>
-                <img class="lazyload signature" src="asset/images/section/signature-1.png" data-src="asset/images/section/signature-1.png" alt="">
-                <!-- <div class="text-signature">Jayden</div> -->
-            </div>
-            <div class="infor">
-                <h6 class="mail letter-spacing-0">Jayden.design@gmail.com</h6>
-                <div class="text-body-2 address">Based in San Fransisco, CA</div>
-            </div>
-            <ul class="social-links justify-content-center">
-                <li>
-                    <a href="#"><i class="icon icon-twitter-x"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="icon icon-dribbble"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="icon icon-instagram"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="icon icon-facebook-f"></i></a>
-                </li>
-            </ul>
-            <a href="#contact" class="bot-button">
-                <div class="text-body-1 text">Get Started</div>
-                <i class="icon icon-arrow-top-right"></i>
-            </a>
-        </div>
-        <!-- /left-sidebar -->
-
-        <!-- main-content -->
-        <div class="main-content relative">
-            <!-- section-hero -->
-            <section class="section-hero" id="home">
-                <div class="tf-container">
-                    <div class="row">
-                        <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                            <div class="text-body-1 infor split-text split-lines-transform">San Francisco, CA 10:24 AM</div>
-                            <div class="main-title">
-                                <div class="text-body-1 dot-before subtitle">Introduction</div>
-                                <h1 class="title split-text effect-right">Making Your World a GOOD & BETTER <br> Free Experience</h1>
-                                <div class="text-body-2 text">My passion lies in crafting elegant, straightforward digital experiences. <br> It's a love for simplicity, pure and simple</div>
-                            </div>
-                            <div class="indicators">
-                                <ul class="list-tags">
-                                    <li><a class="text-body-2 wow fadeInUp" href="#">Branding</a></li>
-                                    <li><a class="text-body-2 wow fadeInUp" data-wow-delay="0.1s" href="#">Art Direction</a></li>
-                                    <li><a class="text-body-2 wow fadeInUp" data-wow-delay="0.2s" href="#">UI Design</a></li>
-                                    <li><a class="text-body-2 wow fadeInUp" href="#">Webflow Development</a></li>
-                                </ul>
-                                <div class="indicators-wrap">
-                                    <div class="indicators-item wow fadeInUp">
-                                        <div class="text-body-1 dot-before indicators-title">Net Worth Gross</div>
-                                        <div class="wg-counter style-1">
-                                            <div class="flex align-items-center justify-content-end">
-                                                <div class="odometer text-display-2" data-number="20">10</div>
-                                                <span class="sub-odo text-display-2">M+</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="indicators-item type-1 wow fadeInUp" data-wow-delay="0.1s">
-                                        <div class="text-body-1 dot-before indicators-title">Success Rate</div>
-                                        <div class="wg-counter style-1">
-                                            <div class="flex align-items-center justify-content-end">
-                                                <div class="odometer text-display-2" data-number="98">10</div>
-                                                <span class="sub-odo text-display-2">%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- /section-hero -->
-            <!-- wrapper-content -->
-            <div class="wrapper-content relative overflow-hidden">
-                <!-- section-experiences -->
-                <section class="section-experiences" id="experience">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="text-body-2 dot-before subtitle">Experiences</div>
-                                <h2 class="desc text-color-change text-tab">
-                                    <span></span> I will offers more than just a place to live it’s a space designed to reflect your unique style inspiration 
-                                </h2>
-                                <div class="experiences-wrap">
-                                    <div class="item scrolling-effect effectLeft">
-                                        <div class="sub-heading text">Drake</div>
-                                        <div class="job-title">
-                                            <h6 class="title">Product Designer</h6>
-                                            <div class="text-body-2 time-line type-tags">2022 - 2023</div>
-                                        </div>
-                                    </div>
-                                    <div class="item scrolling-effect effectLeft">
-                                        <div class="sub-heading text">Minus</div>
-                                        <div class="job-title">
-                                            <h6 class="title">Product Designer</h6>
-                                            <div class="text-body-2 time-line type-tags">2022 - 2023</div>
-                                        </div>
-                                    </div>
-                                    <div class="item scrolling-effect effectLeft">
-                                        <div class="sub-heading text">Avox Studio</div>
-                                        <div class="job-title">
-                                            <h6 class="title">Product Designer</h6>
-                                            <div class="text-body-2 time-line type-tags">2022 - 2023</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-experiences -->
-                <!-- section-selected-works -->
-                <section class="section-selected-works" id="works">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="banner-slider">
-                                    <div class="text-container scroll-banners effect-right">
-                                        <span class="banner-text text-display-2 fw-medium">Selected Work</span>
-                                        <span class="banner-img"><span class="dot-circle"></span></span>
-                                        <span class="banner-text text-display-2 fw-medium">Selected Work</span>
-                                        <span class="banner-img"><span class="dot-circle"></span></span>
-                                        <span class="banner-text text-display-2 fw-medium">Selected Work</span>
-                                        <span class="banner-img"><span class="dot-circle"></span></span>
-                                        <span class="banner-text text-display-2 fw-medium">Selected Work</span>
-                                        <span class="banner-img"><span class="dot-circle"></span></span>
-                                        <span class="banner-text text-display-2 fw-medium">Selected Work</span>
-                                        <span class="banner-img"><span class="dot-circle"></span></span>
-                                        <span class="banner-text text-display-2 fw-medium">Selected Work</span>
-                                        <span class="banner-img"><span class="dot-circle"></span></span>
-                                    </div>
-                                </div>
-                                <div class="works-wrap">
-                                    <div class="works-item scrolling-effect effectLeft">
-                                        <a class="image" href="asset/images/section/works-1.jpg" data-lightbox="example-1">
-                                            <img class="lazyload" src="asset/images/section/works-1.jpg" data-src="asset/images/section/works-1.jpg" alt="">
-                                        </a>
-                                        <div class="content">
-                                            <div class="infor">
-                                                <div class="sub-heading sub">Website Design</div>
-                                                <h3 class="title">
-                                                    <a href="#">Helve Tica Website Redesign</a>
-                                                </h3>
-                                                <a href="#" class="link date text-body-2 type-tags">May 2024</a>
-                                            </div>
-                                            <a href="#" class="btn-links">
-                                                <i class="icon icon-arrow-top-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="works-item scrolling-effect effectLeft">
-                                        <a class="image" href="asset/images/section/works-2.jpg" data-lightbox="example-1">
-                                            <img class="lazyload" src="asset/images/section/works-2.jpg" data-src="asset/images/section/works-2.jpg" alt="">
-                                        </a>
-                                        <div class="content">
-                                            <div class="infor">
-                                                <div class="sub-heading sub">Mobile App Design</div>
-                                                <h3 class="title">
-                                                    <a href="#">X-direct Mobile</a>
-                                                </h3>
-                                                <a href="#" class="link date text-body-2 type-tags">May 2024</a>
-                                            </div>
-                                            <a href="#" class="btn-links">
-                                                <i class="icon icon-arrow-top-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="works-item scrolling-effect effectLeft">
-                                        <a class="image" href="asset/images/section/works-3.jpg" data-lightbox="example-1">
-                                            <img class="lazyload" src="asset/images/section/works-3.jpg" data-src="asset/images/section/works-3.jpg" alt="">
-                                        </a>
-                                        <div class="content">
-                                            <div class="infor">
-                                                <div class="sub-heading sub">Website Design</div>
-                                                <h3 class="title">
-                                                    <a href="#">UIXDR Agency Website</a>
-                                                </h3>
-                                                <a href="#" class="link date text-body-2 type-tags">May 2024</a>
-                                            </div>
-                                            <a href="#" class="btn-links">
-                                                <i class="icon icon-arrow-top-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <div class="box-gradient1 img_bg-1"></div>
-                <!-- /section-selected-works -->
-                <!-- section-services -->
-                <div class="section-services" id="services">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="section-services-inner">
-                                    <div class="text-body-2 dot-before subtitle">My Services</div>
-                                    <div class="services-wrap accordion-wrap" id="accordion-services">
-                                        <div class="item active accordion-item" data-bs-toggle="collapse" role="button" 
-                                            data-bs-target="#collapse-services-1" aria-expanded="true" aria-controls="collapse-services-1">
-                                            <div class="heading accordion-head">
-                                                <div class="icon">
-                                                    <i class="icon-pen-nib-solid"></i>
-                                                </div>
-                                                <div class="text-display-2 title fw-medium">
-                                                    <div class="split-text effect-right">Graphic Design</div>
-                                                    <span class="text-body-1">(01)</span>
-                                                </div>
-                                            </div>
-                                            <div id="collapse-services-1" class="accordion-collapse collapse show" data-bs-parent="#accordion-services">
-                                                <div class="list-text">
-                                                    <div class="text sub-heading">Typography & Color Systems</div>
-                                                    <div class="text sub-heading">Logo Design</div>
-                                                    <div class="text sub-heading">Brand Guidelines</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item collapsed accordion-item" data-bs-toggle="collapse" role="button" 
-                                            data-bs-target="#collapse-services-2" aria-expanded="true" aria-controls="collapse-services-2">
-                                            <div class="heading accordion-head">
-                                                <div class="icon">
-                                                    <i class="icon-ribbon-solid"></i>
-                                                </div>
-                                                <div class="text-display-2 title fw-medium">
-                                                    <div class="split-text effect-right">UI/UX Design</div>
-                                                    <span class="text-body-1">(02)</span>
-                                                </div>
-                                            </div>
-                                            <div id="collapse-services-2" class="accordion-collapse collapse" data-bs-parent="#accordion-services">
-                                                <div class="list-text">
-                                                    <div class="text sub-heading">Iconography </div>
-                                                    <div class="text sub-heading">Imagery & Photography Style</div>
-                                                    <div class="text sub-heading">Grid & Layout Systems</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item collapsed accordion-item" data-bs-toggle="collapse" role="button" 
-                                            data-bs-target="#collapse-services-3" aria-expanded="true" aria-controls="collapse-services-3">
-                                            <div class="heading accordion-head">
-                                                <div class="icon">
-                                                    <i class="icon-crop-alt-solid"></i>
-                                                </div>
-                                                <div class="text-display-2 title fw-medium">
-                                                    <div class="split-text effect-right">Webflow Dev</div>
-                                                    <span class="text-body-1">(03)</span>
-                                                </div>
-                                            </div>
-                                            <div id="collapse-services-3" class="accordion-collapse collapse" data-bs-parent="#accordion-services">
-                                                <div class="list-text">
-                                                    <div class="text sub-heading">UI Components Library</div>
-                                                    <div class="text sub-heading">Motion & Animation Guidelines</div>
-                                                    <div class="text sub-heading">Design Tokens</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="item collapsed accordion-item" data-bs-toggle="collapse" role="button" 
-                                            data-bs-target="#collapse-services-4" aria-expanded="true" aria-controls="collapse-services-4">
-                                            <div class="heading accordion-head">
-                                                <div class="icon">
-                                                    <i class="icon-chess-knight-solid"></i>
-                                                </div>
-                                                <div class="text-display-2 title fw-medium">
-                                                    <div class="split-text effect-right">Framer Dev</div>
-                                                    <span class="text-body-1">(04)</span>
-                                                </div>
-                                            </div>
-                                            <div id="collapse-services-4" class="accordion-collapse collapse" data-bs-parent="#accordion-services">
-                                                <div class="list-text">
-                                                    <div class="text sub-heading">Social Media Guidelines</div>
-                                                    <div class="text sub-heading">Brand Architecture</div>
-                                                    <div class="text sub-heading">Print Assets</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="more-infor">
-                                        <div class="worldwide text-body-2">
-                                            <i class="icon icon-global"></i>
-                                            Available to <span>Worldwide</span>
-                                        </div>
-                                        <a class="text-body-1 link" href="#contact">
-                                            Contact me
-                                            <i class="icon icon-arrow-top-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-gradient1 img_bg-2"></div>
-                <!-- /section-services -->
-                <!-- section-about -->
-                <section class="section-about" id="about">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="heading">
-                                    <div class="text-body-2 dot-before subtitle fw-medium">About Me</div>
-                                    <div>
-                                        <h2 class="fw-medium title text-color-change">Behind every great design is an even greater story</h2>
-                                        <div class="text-body-2 text">Every design has a starting point, and for truly impactful visuals. It's the narrative that guides the creative process, ensuring the final product resonates with meaning and purpose. We believe that understanding the story is paramount.</div>
-                                    </div>
-                                </div>
-                                <div class="box-playground">
-                                    <div class="top">
-                                        <div class="text-body-1 fw-medium instagram-tag">@Jayden.design</div>
-                                        <div class="box-nav style-1">
-                                            <div class="nav-sw navigation-prev-playground">
-                                                <span class="icon icon-angle-left-solid"></span>
-                                            </div>
-                                            <div class="nav-sw navigation-next-playground">
-                                                <span class="icon icon-angle-right-solid"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="wrap-swiper">
-                                        <div class="swiper slider-playground swiper-auto">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <a href="asset/images/section/playground-1.jpg" data-lightbox="example-2">
-                                                        <img class="lazyload" src="asset/images/section/playground-1.jpg" data-src="asset/images/section/playground-1.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="asset/images/section/playground-2.jpg" data-lightbox="example-2">
-                                                        <img class="lazyload" src="asset/images/section/playground-2.jpg" data-src="asset/images/section/playground-2.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="asset/images/section/playground-3.jpg" data-lightbox="example-2">
-                                                        <img class="lazyload" src="asset/images/section/playground-3.jpg" data-src="asset/images/section/playground-3.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="asset/images/section/playground-4.jpg" data-lightbox="example-2">
-                                                        <img class="lazyload" src="asset/images/section/playground-4.jpg" data-src="asset/images/section/playground-4.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="asset/images/section/playground-1.jpg" data-lightbox="example-2">
-                                                        <img class="lazyload" src="asset/images/section/playground-1.jpg" data-src="asset/images/section/playground-1.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="asset/images/section/playground-2.jpg" data-lightbox="example-2">
-                                                        <img class="lazyload" src="asset/images/section/playground-2.jpg" data-src="asset/images/section/playground-2.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="asset/images/section/playground-3.jpg" data-lightbox="example-2">
-                                                        <img class="lazyload" src="asset/images/section/playground-3.jpg" data-src="asset/images/section/playground-3.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <a href="asset/images/section/playground-4.jpg" data-lightbox="example-2">
-                                                        <img class="lazyload" src="asset/images/section/playground-4.jpg" data-src="asset/images/section/playground-4.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-about -->
-                <!-- section-tech-stack -->
-                <section class="section-tech-stack">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="text-display-2 fw-medium heading split-text effect-right">Tech Stack</div>
-                                <div class="swiper slider-tech-stack">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="tech-stack-item">
-                                                <h3 class="fw-medium title">Figma</h3>
-                                                <div class="image">
-                                                    <img src="asset/images/section/figma.png" alt="">
-                                                </div>
-                                                <div class="text-body-1">Leading collaborative design <br> tool</div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="tech-stack-item">
-                                                <h3 class="fw-medium title">Loom</h3>
-                                                <div class="image">
-                                                    <img src="asset/images/section/loom.png" alt="">
-                                                </div>
-                                                <div class="text-body-1">Leading collaborative design tool</div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="tech-stack-item">
-                                                <h3 class="fw-medium title">Framer</h3>
-                                                <div class="image">
-                                                    <img src="asset/images/section/framer.png" alt="">
-                                                </div>
-                                                <div class="text-body-1">Leading collaborative design tool</div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="tech-stack-item">
-                                                <h3 class="fw-medium title">Slack</h3>
-                                                <div class="image">
-                                                    <img src="asset/images/section/slack.png" alt="">
-                                                </div>
-                                                <div class="text-body-1">Leading collaborative design tool</div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="tech-stack-item">
-                                                <h3 class="fw-medium title">Monday</h3>
-                                                <div class="image">
-                                                    <img src="asset/images/section/monday.png" alt="">
-                                                </div>
-                                                <div class="text-body-1">Leading collaborative design tool</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-pagination pagination-tech-stack"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-tech-stack -->
-                <!-- section-testimonial -->
-                <section class="section-testimonial" id="testimonial">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="section-testimonial-inner">
-                                    <div class="text-body-2 dot-before subtitle fw-medium">Testimonial</div>
-                                    <div class="testimonial-wrap">
-                                        <div class="swiper slider-testimonial">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <h3 class="fw-medium text">“ A studio with passionate, professional and full creativity. Much more than i’m expect. Great services, high quality products & affordable. ”</h3>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <h3 class="fw-medium text">“ A little universe of inspiration — where passion meets professionalism and creativity knows no bounds. Exceptional service, stunning products that made me go 'wow' at first glance, and prices that make you smile! ”</h3>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <h3 class="fw-medium text">“ This studio is on another level! Super creative, totally pro, and packed with good vibes. Loved the service, obsessed with the quality — and the prices? Totally worth it! ”</h3>
-                                                </div>
-                                            </div>
-                                            <div class="box-nav style-2">
-                                                <div class="nav-sw navigation-prev-testimonial">
-                                                    <span class="icon icon-angle-left-solid"></span>
-                                                </div>
-                                                <div class="swiper-pagination pagination-testimonial"></div>
-                                                <div class="nav-sw navigation-next-testimonial">
-                                                    <span class="icon icon-angle-right-solid"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="customer-wrap">
-                                        <div class="swiper slider-customer">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
-                                                    <div class="customer-info">
-                                                        <div class="image">
-                                                            <img class="lazyload" src="asset/images/avatar/avatar-2.jpg" data-src="asset/images/avatar/avatar-2.jpg" alt="">
-                                                        </div>
-                                                        <div class="content">
-                                                            <h6 class="name fw-medium">
-                                                                <a href="#" class="link">Lewis Jones</a>
-                                                            </h6>
-                                                            <div class="text-body-2 info">Ceo of Avade Inc</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="customer-info">
-                                                        <div class="image">
-                                                            <img class="lazyload" src="asset/images/avatar/avatar-3.jpg" data-src="asset/images/avatar/avatar-3.jpg" alt="">
-                                                        </div>
-                                                        <div class="content">
-                                                            <h6 class="name fw-medium">
-                                                                <a href="#" class="link">jayden</a>
-                                                            </h6>
-                                                            <div class="text-body-2 info">Ceo of Avade Inc</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <div class="customer-info">
-                                                        <div class="image">
-                                                            <img class="lazyload" src="asset/images/avatar/avatar-4.jpg" data-src="asset/images/avatar/avatar-4.jpg" alt="">
-                                                        </div>
-                                                        <div class="content">
-                                                            <h6 class="name fw-medium">
-                                                                <a href="#" class="link">Musk</a>
-                                                            </h6>
-                                                            <div class="text-body-2 info">Ceo of Avade Inc</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-testimonial -->
-                <!-- section-partners -->
-                <section class="section-partners" id="partners">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="text-body-2 dot-before subtitle">Clients</div>
-                                <h2 class="desc text-color-change text-tab">
-                                    <span></span> Haven offers more than just a place to live it’s a space designed to reflect your unique style inspiration 
-                                </h2>
-                                <div class="swiper slider-partners swiper-auto">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="partners-item">
-                                                <img src="asset/images/partners/logo_zm.svg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="partners-item">
-                                                <img src="asset/images/partners/Union.svg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="partners-item">
-                                                <img src="asset/images/partners/archin.svg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="partners-item">
-                                                <img src="asset/images/partners/Symbol.svg" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="partners-item">
-                                                <img src="asset/images/partners/Github_logo.svg" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-partners -->
-                <!-- section-process -->
-                <section class="section-process">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="text-display-2 fw-medium heading split-text effect-right">Work Process</div>
-                                <div class="swiper slider-process swiper-auto">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="process-item">
-                                                <div class="content">
-                                                    <div class="step text-body-2 fw-medium dot-before type-tags">Step 1</div>
-                                                    <div class="wrap">
-                                                        <h2 class="fw-medium title">Review <br> The Brief</h2>
-                                                        <div class="text-body-2 fw-medium text">I created digital products with ideas use Figma</div>
-                                                    </div>
-                                                </div>
-                                                <div class="image">
-                                                    <div class="gradient-icon gradient-icon-1"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="process-item">
-                                                <div class="content">
-                                                    <div class="step text-body-2 fw-medium dot-before type-tags">Step 2</div>
-                                                    <div class="wrap">
-                                                        <h2 class="fw-medium title">Sketch the Wireframe</h2>
-                                                        <div class="text-body-2 fw-medium text">I created digital products with ideas use Figma</div>
-                                                    </div>
-                                                </div>
-                                                <div class="image">
-                                                    <div class="gradient-icon gradient-icon-2"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="process-item">
-                                                <div class="content">
-                                                    <div class="step text-body-2 fw-medium dot-before type-tags">Step 3</div>
-                                                    <div class="wrap">
-                                                        <h2 class="fw-medium title">Design Progress</h2>
-                                                        <div class="text-body-2 fw-medium text">I created digital products with ideas use Figma</div>
-                                                    </div>
-                                                </div>
-                                                <div class="image">
-                                                    <div class="gradient-icon gradient-icon-3"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="process-item">
-                                                <div class="content">
-                                                    <div class="step text-body-2 fw-medium dot-before type-tags">Step 4</div>
-                                                    <div class="wrap">
-                                                        <h2 class="fw-medium title">Product <br> Examination</h2>
-                                                        <div class="text-body-2 fw-medium text">I created digital products with ideas use Figma</div>
-                                                    </div>
-                                                </div>
-                                                <div class="image">
-                                                    <div class="gradient-icon gradient-icon-4"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-process -->
-                <!-- section-awards -->
-                <section class="section-awards" id="awards">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="text-display-2 fw-medium heading split-text effect-right">My Awards</div>
-                                <div class="list-awards">
-                                    <div class="award-item scrolling-effect effectLeft">
-                                        <h6 class="number fw-medium">1</h6>
-                                        <h6 class="title fw-medium">Awards Site of the Day - Hubfolio</h6>
-                                        <div class="time text-body-1">3/8/2024</div>
-                                    </div>
-                                    <div class="award-item scrolling-effect effectLeft">
-                                        <h6 class="number fw-medium">2</h6>
-                                        <h6 class="title fw-medium">Dribbble - Top Dependent Designer of the year</h6>
-                                        <div class="time text-body-1">3/8/2024</div>
-                                    </div>
-                                    <div class="award-item scrolling-effect effectLeft">
-                                        <h6 class="number fw-medium">3</h6>
-                                        <h6 class="title fw-medium">CSS Web Design Awards - Site of the Month</h6>
-                                        <div class="time text-body-1">3/8/2024</div>
-                                    </div>
-                                    <div class="award-item scrolling-effect effectLeft">
-                                        <h6 class="number fw-medium">4</h6>
-                                        <h6 class="title fw-medium">Top 10 Behance Desinger 2024</h6>
-                                        <div class="time text-body-1">3/8/2024</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-awards -->
-                <!-- section-pricing -->
-                <section class="section-pricing" id="pricing">
-                    <div class="tf-container wg-tabs">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="heading">
-                                    <div class="text-display-2 fw-medium title split-text effect-right">My Pricing</div>
-                                    <div class="menu-tab style-1">
-                                        <div class="item sub-heading active">Standard Plan</div>
-                                        <div class="item sub-heading">Premium Plan</div>
-                                    </div>
-                                </div>
-                                <div class="widget-content-tab">
-                                    <div class="widget-content-inner active">
-                                        <div class="pricing-item wow fadeInUp">
-                                            <div class="top">
-                                                
-                                                <h6 class="dot-before fw-medium title">Standard Plan</h6>
-                                                <div class="text-body-1 fw-medium text">Have design ready to build? Or small budget?</div>
-                                                <div class="price">
-                                                    <div class="text-display-2 fw-medium number">$49</div>
-                                                    <span>/ hours</span>
-                                                </div>
-                                            </div>
-                                            <div class="list-desc">
-                                                <div class="desc text-body-1">Need your wireframe</div>
-                                                <div class="desc text-body-1">Design with Figma, Framer</div>
-                                                <div class="desc text-body-1">Implement with Webflow, React, WordPress, Laravel/PHP</div>
-                                                <div class="desc text-body-1">Remote/Online</div>
-                                                <div class="desc text-body-1">Work in business days, no weekend.</div>
-                                                <div class="desc text-body-1">Support 6 months</div>
-                                            </div>
-                                            <div class="bot-btn">
-                                                <a href="#contact" class="text-body-2 fw-medium">
-                                                    Get Started
-                                                    <i class="icon icon-arrow-top-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-content-inner">
-                                        <div class="pricing-item">
-                                            <div class="top">
-                                                
-                                                <h6 class="dot-before fw-medium title">Premium Plan</h6>
-                                                <div class="text-body-1 fw-medium text">Have design ready to build? Or small budget?</div>
-                                                <div class="price">
-                                                    <div class="text-display-2 fw-medium number">$99</div>
-                                                    <span>/ hours</span>
-                                                </div>
-                                            </div>
-                                            <div class="list-desc">
-                                                <div class="desc text-body-1">Need your wireframe</div>
-                                                <div class="desc text-body-1">Design with Figma, Framer</div>
-                                                <div class="desc text-body-1">Implement with Webflow, React, WordPress, Laravel/PHP</div>
-                                                <div class="desc text-body-1">Remote/Online</div>
-                                                <div class="desc text-body-1">Work in business days, no weekend.</div>
-                                                <div class="desc text-body-1">Support 12 months</div>
-                                            </div>
-                                            <div class="bot-btn">
-                                                <a href="#contact" class="text-body-2 fw-medium">
-                                                    Get Started
-                                                    <i class="icon icon-arrow-top-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                               <a href="#contact" class="custom-quote fw-medium h3 wow fadeInUp" data-wow-delay="0.1s">
-                                    Custom Quote
-                                    <i class="icon icon-arrow-top-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-pricing -->
-                <!-- section-faqs -->
-                <section class="section-faqs" id="faqs">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="text-display-2 fw-medium heading split-text effect-right">FAQs</div>
-                                <div class="accordion-wrap" id="accordion-1">
-                                    <div class="item active accordion-item scrolling-effect effectLeft" data-bs-toggle="collapse" role="button" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                        <h6 class="accordion-head fw-medium">
-                                            What’s the Jayden progress like?
-                                            <span class="icon"></span>
-                                        </h6>
-                                        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordion-1">
-                                            <p class="text-body-2 fw-medium">
-                                                I specialize in UX/UI design, web development, and branding for individuals <br> and businesses.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item accordion-item collapsed scrolling-effect effectLeft" data-bs-toggle="collapse" role="button" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                        <h6 class="accordion-head fw-medium">
-                                            Design delivery time estimate?
-                                            <span class="icon"></span>
-                                        </h6>
-                                        <div id="collapse2" class="accordion-collapse collapse " data-bs-parent="#accordion-1">
-                                            <p class="text-body-2 fw-medium">
-                                                I specialize in UX/UI design, web development, and branding for individuals <br> and businesses.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item accordion-item collapsed scrolling-effect effectLeft" data-bs-toggle="collapse" role="button" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                        <h6 class="accordion-head fw-medium">
-                                            What services do you offer?
-                                            <span class="icon"></span>
-                                        </h6>
-                                        <div id="collapse3" class="accordion-collapse collapse " data-bs-parent="#accordion-1">
-                                            <p class="text-body-2 fw-medium">
-                                                I specialize in UX/UI design, web development, and branding for individuals <br> and businesses.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item accordion-item collapsed scrolling-effect effectLeft" data-bs-toggle="collapse" role="button" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                        <h6 class="accordion-head fw-medium">
-                                            What if I don’t like design?
-                                            <span class="icon"></span>
-                                        </h6>
-                                        <div id="collapse4" class="accordion-collapse collapse " data-bs-parent="#accordion-1">
-                                            <p class="text-body-2 fw-medium">
-                                                I specialize in UX/UI design, web development, and branding for individuals <br> and businesses.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item accordion-item collapsed scrolling-effect effectLeft" data-bs-toggle="collapse" role="button" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                                        <h6 class="accordion-head fw-medium">
-                                            Are there any refund?
-                                            <span class="icon"></span>
-                                        </h6>
-                                        <div id="collapse5" class="accordion-collapse collapse " data-bs-parent="#accordion-1">
-                                            <p class="text-body-2 fw-medium">
-                                                I specialize in UX/UI design, web development, and branding for individuals <br> and businesses.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ask-me">
-                                    <div class="text-body-2 fw-medium text">Do you have any other questions?</div>
-                                    <a href="#contact" class="text-body-2 fw-medium link">Ask me directly</a>
-                                </div>
-                            </div>  
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-faqs -->
-                <!-- section-contact -->
-                <section class="section-contact" id="contact">
-                    <div class="tf-container">
-                        <div class="row">
-                            <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                                <div class="section-contact-inner">
-                                    <h1 class="fw-medium heading">Contact For <br> Work</h1>
-                                    <form action="./asset/contact/contact-process.php" class="form-contact" id="form-contact" method="post">
-                                        <fieldset class="fiel-mail">
-                                            <label class="text-xs-2">Your Email</label>
-                                            <input type="email" name="mail" id="mail" placeholder="Enter the Email" value="" aria-required="true" required>
-                                        </fieldset>
-                                        <fieldset class="fiel-phone">
-                                            <label class="text-xs-2">Your Phone</label>
-                                            <input type="text" name="phone" id="phone" placeholder="Enter your phone number" value="" aria-required="true" required>
-                                        </fieldset>
-                                        <fieldset class="fiel-text">
-                                            <label class="text-xs-2">Messenger</label>
-                                            <textarea placeholder="" aria-required="true" id="message" required name="message"></textarea>
-                                        </fieldset>
-                                        <div class="pricing-list list-choose">
-                                            <div class="item text-body-2 choose-item font-poppins">&lt; $1,000</div>
-                                            <div class="item text-body-2 choose-item font-poppins">$1,000 - $5,000</div>
-                                            <div class="item text-body-2 choose-item font-poppins">$5,000 - $10,000</div>
-                                            <div class="item text-body-2 choose-item font-poppins">$10,000 - $20,000</div>
-                                            <div class="item text-body-2 choose-item font-poppins">&gt; $20,000</div>
-                                        </div>
-                                        <div class="bot-btn send-wrap">
-                                            <button type="submit" class="text-body-2 fw-medium">
-                                                <span class="font-poppins flex-grow-1 text-start">Get Started</span>
-                                                <i class="icon icon-arrow-top-right"></i>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- /section-contact -->
-
-            </div>
-            <!-- /wrapper-content -->
-        </div>
-        <!-- /main-content -->
-
-        <!-- footer -->
-        <footer class="tf-footer style-1">
-            <div class="tf-container">
-                <div class="row">
-                    <div class="offset-xxl-5 col-xxl-7 offset-xl-4 col-xl-7 offset-lg-2 col-lg-8">
-                        <a href="#contact" class="cta">
-                            <img class="lazyload signature" src="asset/images/section/signature-1.png" data-src="asset/images/section/signature-1.png" alt="">
-                <!-- <div class="text-signature">Jayden</div> -->
-                            <div class="infiniteslide_wrap cta-infiniteslide style-1">
-                                <div class="infiniteslide">
-                                    <div class="marquee-child-item">
-                                        <div class="text-display-2">Book A Call</div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="dot"></div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="text-display-2">Book A Call</div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="dot"></div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="text-display-2">Book A Call</div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="dot"></div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="text-display-2">Book A Call</div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="dot"></div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="text-display-2">Book A Call</div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="dot"></div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="text-display-2">Book A Call</div>
-                                    </div>
-                                    <div class="marquee-child-item">
-                                        <div class="dot"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        <img src="asset/images/section/img-bg-2.png" alt="" class="map">
-            <div class="box-gradient2"></div>
-        </footer>
-        <!-- /footer -->
-
-        
-      
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">AY<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-cta" href="#contact">Let's talk →</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <!-- End Wrapper -->
+  </div>
+</nav>
 
-    <!-- Javascript -->
-    <script src="asset/js/bootstrap.min.js"></script>
-    <script src="asset/js/jquery.min.js"></script>
-    <script src="asset/js/jquery.validate.min.js"></script>
-    <script src="asset/js/lazysize.min.js"></script>
-    <script src="asset/js/wow.min.js"></script>
-    <script src="asset/js/swiper-bundle.min.js"></script>
-    <script src="asset/js/swiper.js"></script>
-    <script src="asset/js/gsap.min.js"></script>
-    <script src="asset/js/Splitetext.js"></script>
-    <script src="asset/js/ScrollTrigger.min.js"></script>
-    <script src="asset/js/ScrollSmooth.js"></script>
-    <script src="asset/js/handleeffectgsap.js"></script>
-    <script src="asset/js/odometer.min.js"></script>
-    <script src="asset/js/counter.js"></script>
-    
-    <script src="asset/js/infinityslide.js"></script>
-    <script src="asset/js/plugin.js"></script>
-    <script src="asset/js/lightbox.min.js"></script>
-    <script src="asset/js/main.js"></script>
-    <!-- /Javascript -->
+<header class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">@abuzaryousaf · Lahore, Pakistan</span>
+      <h1>Abuzar Yousaf<span class="role">Social Media Manager — leading content, campaigns and a 6-person team for 30+ brands</span></h1>
+      <p class="bio">I plan, create and manage the social presence for fashion labels, auto dealers, clinics and e-commerce brands across Pakistan and the UAE — running everything end-to-end, from onboarding to delivery: content calendars, Meta ad campaigns, AI-assisted content and video production, and the team that makes it all happen.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#portfolio">View my work</a>
+        <a class="btn btn-ghost" href="assets/Abuzar-Yousaf-CV.pdf" download>Download CV ↓</a>
+      </div>
+    </div>
+         <!-- <div class="hero-photo">
+  <div class="photo-frame">
+    <img src="assets/abuzar-photo.png" alt="Abuzar Yousaf">
+  </div>
+</div> -->
+    <div class="hero-photo">
+      <div class="photo-frame">
+            <img src="assets/abuzar-photo.png" alt="Abuzar Yousaf">
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>3+</b><span>YEARS EXPERIENCE</span></div>
+    <div class="stat"><b>30+</b><span>BRANDS PARTNERED</span></div>
+    <div class="stat"><b>40+</b><span>WORDPRESS SITES MANAGED</span></div>
+    <div class="stat"><b>6</b><span>TEAM MEMBERS LED</span></div>
+    <div class="stat"><b>20+</b><span>AI TOOLS IN WORKFLOW</span></div>
+    <div class="stat"><b>88%</b><span>ON-TIME DELIVERY</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">01 · ABOUT</span>
+      <h2>A social media manager who also runs the machine behind the content.</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Three years ago I was answering customer messages and building the odd product listing. Today I run full client accounts — the onboarding call, the content calendar, the ad spend, the WordPress site, and the team that ships it all — for brands across fashion, food, automotive, dental care and home décor in Pakistan and the UAE.</p>
+        <p>I lead and mentor a six-person team across content, design and development, and lean on a 20-plus tool AI workflow to keep output high without cutting corners on quality. Along the way I've kept 40+ WordPress sites and 1,000+ Shopify/WooCommerce listings live, and delivered 10+ client projects at an 88% on-time rate.</p>
+        <ul class="lang-list">
+          <li>English <span>CONVERSATIONAL</span></li>
+          <li>Urdu <span>NATIVE</span></li>
+          <li>Punjabi <span>NATIVE</span></li>
+          <li>Hindi <span>FLUENT</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="edu-card">
+          <span class="when">2023 — Ongoing</span>
+          <h4>BS Software Engineering</h4>
+          <div class="where">Virtual University</div>
+        </div>
+        <div class="edu-card">
+          <span class="when">2020 — 2022</span>
+          <h4>FSc Pre-Engineering</h4>
+          <div class="where">Punjab College</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">02 · SERVICES</span>
+      <h2>Eight things I own end-to-end.</h2>
+      <p>From the first onboarding call to the final report — no hand-offs, no half-finished work.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service"><span class="num">01</span><h3>Social Media Management &amp; Growth</h3><p>Content calendars, daily posting and community replies that turn followers into customers, across Instagram, Facebook, LinkedIn and TikTok.</p></div>
+      <div class="service"><span class="num">02</span><h3>AI-Powered Content, Graphics &amp; Video</h3><p>Posts, reels and promotional videos produced with a 20+ tool AI workflow, so brands get more content, faster, without losing craft.</p></div>
+      <div class="service"><span class="num">03</span><h3>Paid Social &amp; Meta Ads</h3><p>Facebook and Instagram ad campaigns planned and managed alongside organic content, so paid and organic push the same story.</p></div>
+      <div class="service"><span class="num">04</span><h3>Brand Strategy &amp; LinkedIn Management</h3><p>A consistent voice and visual identity for founders and companies who need to show up like they mean it.</p></div>
+      <div class="service"><span class="num">05</span><h3>End-to-End Project Management</h3><p>Onboarding, timelines, revisions and reporting for every client account, so nothing gets handed off half-finished.</p></div>
+      <div class="service"><span class="num">06</span><h3>E-Commerce Operations</h3><p>Shopify and WooCommerce stores kept running: listings, inventory, orders and shipment, handled daily.</p></div>
+      <div class="service"><span class="num">07</span><h3>WordPress Website Management &amp; SEO</h3><p>40+ WordPress sites built and maintained in Elementor, with SEO and content updates that keep them ranking.</p></div>
+      <div class="service"><span class="num">08</span><h3>Team Leadership &amp; Client Support</h3><p>Leading and mentoring a six-person team, while staying the first point of contact for every client.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">03 · HOW I WORK</span>
+      <h2>Onboarding to delivery — one person owns the whole pipeline.</h2>
+    </div>
+    <div class="process-row">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <h4>Onboard</h4>
+        <p>I get inside the brand fast: voice, audience, goals and what's already working.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <h4>Plan</h4>
+        <p>A content calendar and campaign plan built around real engagement data, not guesswork.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <h4>Create</h4>
+        <p>Posts, reels, graphics and video, produced fast with an AI-assisted workflow across 20+ tools.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <h4>Launch</h4>
+        <p>Organic content and paid Meta campaigns go live together, timed for when the audience is online.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">05</div>
+        <h4>Report</h4>
+        <p>Clear reporting on what worked, what didn't, and what changes next month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">04 · EXPERIENCE</span>
+      <h2>Where I've done the work.</h2>
+    </div>
+    <div class="timeline">
+
+      <div class="post">
+        <div class="post-head">
+          <div class="post-avatar" style="background:var(--coral);">ET</div>
+          <div><h4>Ethisol</h4><div class="handle">Social Media Manager / Project Manager</div></div>
+          <div class="post-when">DEC 2025 — JUL 2026</div>
+        </div>
+        <div class="post-body">
+          <ul>
+            <li>Managed 10+ client accounts end-to-end, from onboarding through to final delivery.</li>
+            <li>Led and mentored a six-person team across content, design and development.</li>
+            <li>Directed Meta ad campaigns and AI-assisted content production across 20+ tools, alongside organic posting.</li>
+            <li>Planned timelines and assigned tasks, hitting 88% on-time project delivery.</li>
+            <li>Owned client communication, reporting and revisions from first call to launch.</li>
+          </ul>
+        </div>
+        <div class="post-foot"><span><b>10+</b> clients</span><span><b>6-person</b> team led</span><span><b>20+</b> AI tools</span><span><b>88%</b> on-time</span></div>
+      </div>
+
+      <div class="post">
+        <div class="post-head">
+          <div class="post-avatar" style="background:var(--grape);">W3</div>
+          <div><h4>WE360</h4><div class="handle">Social Media Manager / Executive</div></div>
+          <div class="post-when">JUN 2025 — DEC 2025</div>
+        </div>
+        <div class="post-body">
+          <ul>
+            <li>Managed social media for 6+ brands across Facebook, Instagram, LinkedIn and TikTok.</li>
+            <li>Created 200+ social posts, reels and marketing creatives.</li>
+            <li>Planned monthly content calendars and kept brand communication consistent.</li>
+            <li>Analyzed campaign performance and optimized content using analytics.</li>
+          </ul>
+        </div>
+        <div class="post-foot"><span><b>6+</b> brands</span><span><b>200+</b> posts &amp; reels</span></div>
+      </div>
+
+      <div class="post">
+        <div class="post-head">
+          <div class="post-avatar" style="background:var(--amber); color:var(--ink);">VM</div>
+          <div><h4>Vibes By MHK</h4><div class="handle">WordPress &amp; E-Commerce Operations Executive</div></div>
+          <div class="post-when">AUG 2023 — MAY 2025</div>
+        </div>
+        <div class="post-body">
+          <ul>
+            <li>Managed 1,000+ Shopify product listings and WooCommerce stores.</li>
+            <li>Maintained 40+ WordPress websites using Elementor and essential plugins.</li>
+            <li>Improved product visibility through SEO optimization and content updates.</li>
+            <li>Processed 300+ monthly orders with inventory and shipment management.</li>
+          </ul>
+        </div>
+        <div class="post-foot"><span><b>1,000+</b> listings</span><span><b>40+</b> WordPress sites</span><span><b>300+</b> orders/mo</span></div>
+      </div>
+
+      <div class="post">
+        <div class="post-head">
+          <div class="post-avatar" style="background:var(--ink);">LM</div>
+          <div><h4>Leomart</h4><div class="handle">Social Media &amp; Customer Support Executive</div></div>
+          <div class="post-when">JUN 2022 — AUG 2023</div>
+        </div>
+        <div class="post-body">
+          <ul>
+            <li>Managed daily social media content and customer engagement.</li>
+            <li>Created 150+ promotional graphics and short-form videos.</li>
+            <li>Processed 300+ customer orders and resolved support requests efficiently.</li>
+          </ul>
+        </div>
+        <div class="post-foot"><span><b>150+</b> graphics &amp; videos</span><span><b>300+</b> orders handled</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">05 · PORTFOLIO</span>
+      <h2>Brands I've built and managed.</h2>
+      <p>A selection of live websites and social accounts under my management.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="social">Social Media</button>
+      <button class="tab-btn" data-tab="web">Websites</button>
+      <button class="tab-btn" data-tab="creative">Creatives</button>
+      <button class="tab-btn" data-tab="videos">Videos</button>
+      <button class="tab-btn" data-tab="logos">Logos</button>
+      <button class="tab-btn" data-tab="banners">Banners &amp; Others</button>
+    </div>
+
+    <div class="tab-panel brand-grid active" id="social">
+      <a class="brand-card" href="https://www.instagram.com/carepakistanofficial/" target="_blank" rel="noopener"><span class="name">Care Pakistan Official</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/elitesolutions.pk/" target="_blank" rel="noopener"><span class="name">Elite Solutions</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/7cars.ae" target="_blank" rel="noopener"><span class="name">7Cars UAE</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/alinadentalclinic/" target="_blank" rel="noopener"><span class="name">Alina Dental Clinic</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/anayaskitchenlahore/" target="_blank" rel="noopener"><span class="name">Anaya's Kitchen Lahore</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/vibes.bymhk/" target="_blank" rel="noopener"><span class="name">Vibes by MHK</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/halawasilk/" target="_blank" rel="noopener"><span class="name">Halawa Silk</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/teetokyo_/" target="_blank" rel="noopener"><span class="name">TeeTokyo</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/hadayahomeslahore" target="_blank" rel="noopener"><span class="name">Hadaya Homes Lahore</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/robust.com.pk" target="_blank" rel="noopener"><span class="name">Robust Pakistan</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/blackstonefoods.pk" target="_blank" rel="noopener"><span class="name">Blackstone Foods</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/hydrpak" target="_blank" rel="noopener"><span class="name">Hydrpak</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/dext.soft/" target="_blank" rel="noopener"><span class="name">DextSoft</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/dmca.pk" target="_blank" rel="noopener"><span class="name">DMCA Pakistan</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.instagram.com/bianaturalsofficial" target="_blank" rel="noopener"><span class="name">BIA Naturals</span><span class="arrow">↗</span></a>
+    </div>
+
+    <div class="tab-panel brand-grid" id="web">
+      <a class="brand-card" href="https://arysportswear.us" target="_blank" rel="noopener"><span class="name">ARY Sportswear</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://vibesbymhk.com" target="_blank" rel="noopener"><span class="name">Vibes by MHK</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://7cars.ae" target="_blank" rel="noopener"><span class="name">7Cars UAE</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://halawasilk.pk" target="_blank" rel="noopener"><span class="name">Halawa Silk</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://teetokyo.com" target="_blank" rel="noopener"><span class="name">TeeTokyo</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://niazgarments.com" target="_blank" rel="noopener"><span class="name">Niaz Garments</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://stalfytrading.co.uk" target="_blank" rel="noopener"><span class="name">Stalfy Trading UK</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://elitesolutions.pk" target="_blank" rel="noopener"><span class="name">Elite Solutions</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://carepakistan.com.pk" target="_blank" rel="noopener"><span class="name">Care Pakistan</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://mep.elitesolutions.pk" target="_blank" rel="noopener"><span class="name">Elite MEP Division</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://koolvibez.com" target="_blank" rel="noopener"><span class="name">Kool Vibez</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://beautyconscious.store" target="_blank" rel="noopener"><span class="name">Beauty Conscious</span><span class="arrow">↗</span></a>
+          <a class="brand-card" href="https://dmca.pk/" target="_blank" rel="noopener"><span class="name">DMCA Pakistan</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.bianaturals.com/" target="_blank" rel="noopener"><span class="name">BIA Naturals</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://blackstonefoods.com.pk/" target="_blank" rel="noopener"><span class="name">Blackstone Foods</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://www.candiskin.com/" target="_blank" rel="noopener"><span class="name">Candi Skin</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://dracuir.com/" target="_blank" rel="noopener"><span class="name">Dracuir</span><span class="arrow">↗</span></a>
+      <a class="brand-card" href="https://quadratax.com/" target="_blank" rel="noopener"><span class="name">Quadratax</span><span class="arrow">↗</span></a>
+    </div>
+
+<div class="tab-panel creative-grid" id="creative">
+        <a class="creative-card" href="assets/creative/creative (1).png" target="_blank">
+          <img src="assets/creative/creative (1).png" loading="lazy" alt="Creative 1">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (2).png" target="_blank">
+          <img src="assets/creative/creative (2).png" loading="lazy" alt="Creative 2">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (3).png" target="_blank">
+          <img src="assets/creative/creative (3).png" loading="lazy" alt="Creative 3">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (4).png" target="_blank">
+          <img src="assets/creative/creative (4).png" loading="lazy" alt="Creative 4">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (5).png" target="_blank">
+          <img src="assets/creative/creative (5).png" loading="lazy" alt="Creative 5">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (6).png" target="_blank">
+          <img src="assets/creative/creative (6).png" loading="lazy" alt="Creative 6">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (7).png" target="_blank">
+          <img src="assets/creative/creative (7).png" loading="lazy" alt="Creative 7">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (8).png" target="_blank">
+          <img src="assets/creative/creative (8).png" loading="lazy" alt="Creative 8">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (9).png" target="_blank">
+          <img src="assets/creative/creative (9).png" loading="lazy" alt="Creative 9">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (10).png" target="_blank">
+          <img src="assets/creative/creative (10).png" loading="lazy" alt="Creative 10">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (11).png" target="_blank">
+          <img src="assets/creative/creative (11).png" loading="lazy" alt="Creative 11">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (12).png" target="_blank">
+          <img src="assets/creative/creative (12).png" loading="lazy" alt="Creative 12">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (13).png" target="_blank">
+          <img src="assets/creative/creative (13).png" loading="lazy" alt="Creative 13">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (14).png" target="_blank">
+          <img src="assets/creative/creative (14).png" loading="lazy" alt="Creative 14">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (15).png" target="_blank">
+          <img src="assets/creative/creative (15).png" loading="lazy" alt="Creative 15">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (16).png" target="_blank">
+          <img src="assets/creative/creative (16).png" loading="lazy" alt="Creative 16">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (17).png" target="_blank">
+          <img src="assets/creative/creative (17).png" loading="lazy" alt="Creative 17">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (18).png" target="_blank">
+          <img src="assets/creative/creative (18).png" loading="lazy" alt="Creative 18">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (19).png" target="_blank">
+          <img src="assets/creative/creative (19).png" loading="lazy" alt="Creative 19">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (20).png" target="_blank">
+          <img src="assets/creative/creative (20).png" loading="lazy" alt="Creative 20">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (21).png" target="_blank">
+          <img src="assets/creative/creative (21).png" loading="lazy" alt="Creative 21">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (22).png" target="_blank">
+          <img src="assets/creative/creative (22).png" loading="lazy" alt="Creative 22">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (23).png" target="_blank">
+          <img src="assets/creative/creative (23).png" loading="lazy" alt="Creative 23">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (24).png" target="_blank">
+          <img src="assets/creative/creative (24).png" loading="lazy" alt="Creative 24">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (25).png" target="_blank">
+          <img src="assets/creative/creative (25).png" loading="lazy" alt="Creative 25">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (26).png" target="_blank">
+          <img src="assets/creative/creative (26).png" loading="lazy" alt="Creative 26">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (27).png" target="_blank">
+          <img src="assets/creative/creative (27).png" loading="lazy" alt="Creative 27">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (28).png" target="_blank">
+          <img src="assets/creative/creative (28).png" loading="lazy" alt="Creative 28">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (29).png" target="_blank">
+          <img src="assets/creative/creative (29).png" loading="lazy" alt="Creative 29">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (30).png" target="_blank">
+          <img src="assets/creative/creative (30).png" loading="lazy" alt="Creative 30">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (31).png" target="_blank">
+          <img src="assets/creative/creative (31).png" loading="lazy" alt="Creative 31">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (32).png" target="_blank">
+          <img src="assets/creative/creative (32).png" loading="lazy" alt="Creative 32">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (33).png" target="_blank">
+          <img src="assets/creative/creative (33).png" loading="lazy" alt="Creative 33">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (34).png" target="_blank">
+          <img src="assets/creative/creative (34).png" loading="lazy" alt="Creative 34">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (35).png" target="_blank">
+          <img src="assets/creative/creative (35).png" loading="lazy" alt="Creative 35">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (36).png" target="_blank">
+          <img src="assets/creative/creative (36).png" loading="lazy" alt="Creative 36">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (37).png" target="_blank">
+          <img src="assets/creative/creative (37).png" loading="lazy" alt="Creative 37">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (38).png" target="_blank">
+          <img src="assets/creative/creative (38).png" loading="lazy" alt="Creative 38">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (39).png" target="_blank">
+          <img src="assets/creative/creative (39).png" loading="lazy" alt="Creative 39">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (40).png" target="_blank">
+          <img src="assets/creative/creative (40).png" loading="lazy" alt="Creative 40">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (41).png" target="_blank">
+          <img src="assets/creative/creative (41).png" loading="lazy" alt="Creative 41">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (42).png" target="_blank">
+          <img src="assets/creative/creative (42).png" loading="lazy" alt="Creative 42">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (43).png" target="_blank">
+          <img src="assets/creative/creative (43).png" loading="lazy" alt="Creative 43">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (44).png" target="_blank">
+          <img src="assets/creative/creative (44).png" loading="lazy" alt="Creative 44">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (45).png" target="_blank">
+          <img src="assets/creative/creative (45).png" loading="lazy" alt="Creative 45">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (46).png" target="_blank">
+          <img src="assets/creative/creative (46).png" loading="lazy" alt="Creative 46">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (47).png" target="_blank">
+          <img src="assets/creative/creative (47).png" loading="lazy" alt="Creative 47">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (48).png" target="_blank">
+          <img src="assets/creative/creative (48).png" loading="lazy" alt="Creative 48">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (49).png" target="_blank">
+          <img src="assets/creative/creative (49).png" loading="lazy" alt="Creative 49">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (50).png" target="_blank">
+          <img src="assets/creative/creative (50).png" loading="lazy" alt="Creative 50">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (51).png" target="_blank">
+          <img src="assets/creative/creative (51).png" loading="lazy" alt="Creative 51">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (52).png" target="_blank">
+          <img src="assets/creative/creative (52).png" loading="lazy" alt="Creative 52">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (53).png" target="_blank">
+          <img src="assets/creative/creative (53).png" loading="lazy" alt="Creative 53">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (54).png" target="_blank">
+          <img src="assets/creative/creative (54).png" loading="lazy" alt="Creative 54">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (55).png" target="_blank">
+          <img src="assets/creative/creative (55).png" loading="lazy" alt="Creative 55">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (56).png" target="_blank">
+          <img src="assets/creative/creative (56).png" loading="lazy" alt="Creative 56">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (57).png" target="_blank">
+          <img src="assets/creative/creative (57).png" loading="lazy" alt="Creative 57">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (58).png" target="_blank">
+          <img src="assets/creative/creative (58).png" loading="lazy" alt="Creative 58">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (59).png" target="_blank">
+          <img src="assets/creative/creative (59).png" loading="lazy" alt="Creative 59">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (60).png" target="_blank">
+          <img src="assets/creative/creative (60).png" loading="lazy" alt="Creative 60">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (61).png" target="_blank">
+          <img src="assets/creative/creative (61).png" loading="lazy" alt="Creative 61">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (62).png" target="_blank">
+          <img src="assets/creative/creative (62).png" loading="lazy" alt="Creative 62">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (63).png" target="_blank">
+          <img src="assets/creative/creative (63).png" loading="lazy" alt="Creative 63">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (64).png" target="_blank">
+          <img src="assets/creative/creative (64).png" loading="lazy" alt="Creative 64">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (65).png" target="_blank">
+          <img src="assets/creative/creative (65).png" loading="lazy" alt="Creative 65">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (66).png" target="_blank">
+          <img src="assets/creative/creative (66).png" loading="lazy" alt="Creative 66">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (67).png" target="_blank">
+          <img src="assets/creative/creative (67).png" loading="lazy" alt="Creative 67">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (68).png" target="_blank">
+          <img src="assets/creative/creative (68).png" loading="lazy" alt="Creative 68">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (69).png" target="_blank">
+          <img src="assets/creative/creative (69).png" loading="lazy" alt="Creative 69">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (70).png" target="_blank">
+          <img src="assets/creative/creative (70).png" loading="lazy" alt="Creative 70">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (71).png" target="_blank">
+          <img src="assets/creative/creative (71).png" loading="lazy" alt="Creative 71">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (72).png" target="_blank">
+          <img src="assets/creative/creative (72).png" loading="lazy" alt="Creative 72">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (73).png" target="_blank">
+          <img src="assets/creative/creative (73).png" loading="lazy" alt="Creative 73">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (74).png" target="_blank">
+          <img src="assets/creative/creative (74).png" loading="lazy" alt="Creative 74">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (75).png" target="_blank">
+          <img src="assets/creative/creative (75).png" loading="lazy" alt="Creative 75">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (76).png" target="_blank">
+          <img src="assets/creative/creative (76).png" loading="lazy" alt="Creative 76">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (77).png" target="_blank">
+          <img src="assets/creative/creative (77).png" loading="lazy" alt="Creative 77">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (78).png" target="_blank">
+          <img src="assets/creative/creative (78).png" loading="lazy" alt="Creative 78">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (79).png" target="_blank">
+          <img src="assets/creative/creative (79).png" loading="lazy" alt="Creative 79">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (80).png" target="_blank">
+          <img src="assets/creative/creative (80).png" loading="lazy" alt="Creative 80">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (81).png" target="_blank">
+          <img src="assets/creative/creative (81).png" loading="lazy" alt="Creative 81">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (82).png" target="_blank">
+          <img src="assets/creative/creative (82).png" loading="lazy" alt="Creative 82">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (83).png" target="_blank">
+          <img src="assets/creative/creative (83).png" loading="lazy" alt="Creative 83">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (84).png" target="_blank">
+          <img src="assets/creative/creative (84).png" loading="lazy" alt="Creative 84">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (85).png" target="_blank">
+          <img src="assets/creative/creative (85).png" loading="lazy" alt="Creative 85">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (86).png" target="_blank">
+          <img src="assets/creative/creative (86).png" loading="lazy" alt="Creative 86">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (87).png" target="_blank">
+          <img src="assets/creative/creative (87).png" loading="lazy" alt="Creative 87">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (88).png" target="_blank">
+          <img src="assets/creative/creative (88).png" loading="lazy" alt="Creative 88">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (89).png" target="_blank">
+          <img src="assets/creative/creative (89).png" loading="lazy" alt="Creative 89">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (90).png" target="_blank">
+          <img src="assets/creative/creative (90).png" loading="lazy" alt="Creative 90">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (91).png" target="_blank">
+          <img src="assets/creative/creative (91).png" loading="lazy" alt="Creative 91">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (92).png" target="_blank">
+          <img src="assets/creative/creative (92).png" loading="lazy" alt="Creative 92">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (93).png" target="_blank">
+          <img src="assets/creative/creative (93).png" loading="lazy" alt="Creative 93">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (94).png" target="_blank">
+          <img src="assets/creative/creative (94).png" loading="lazy" alt="Creative 94">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (95).png" target="_blank">
+          <img src="assets/creative/creative (95).png" loading="lazy" alt="Creative 95">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (96).png" target="_blank">
+          <img src="assets/creative/creative (96).png" loading="lazy" alt="Creative 96">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (97).png" target="_blank">
+          <img src="assets/creative/creative (97).png" loading="lazy" alt="Creative 97">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (98).png" target="_blank">
+          <img src="assets/creative/creative (98).png" loading="lazy" alt="Creative 98">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (99).png" target="_blank">
+          <img src="assets/creative/creative (99).png" loading="lazy" alt="Creative 99">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (100).png" target="_blank">
+          <img src="assets/creative/creative (100).png" loading="lazy" alt="Creative 100">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (101).png" target="_blank">
+          <img src="assets/creative/creative (101).png" loading="lazy" alt="Creative 101">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (102).png" target="_blank">
+          <img src="assets/creative/creative (102).png" loading="lazy" alt="Creative 102">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (103).png" target="_blank">
+          <img src="assets/creative/creative (103).png" loading="lazy" alt="Creative 103">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (104).png" target="_blank">
+          <img src="assets/creative/creative (104).png" loading="lazy" alt="Creative 104">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (105).png" target="_blank">
+          <img src="assets/creative/creative (105).png" loading="lazy" alt="Creative 105">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (106).png" target="_blank">
+          <img src="assets/creative/creative (106).png" loading="lazy" alt="Creative 106">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (107).png" target="_blank">
+          <img src="assets/creative/creative (107).png" loading="lazy" alt="Creative 107">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (108).png" target="_blank">
+          <img src="assets/creative/creative (108).png" loading="lazy" alt="Creative 108">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (109).png" target="_blank">
+          <img src="assets/creative/creative (109).png" loading="lazy" alt="Creative 109">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (110).png" target="_blank">
+          <img src="assets/creative/creative (110).png" loading="lazy" alt="Creative 110">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (111).png" target="_blank">
+          <img src="assets/creative/creative (111).png" loading="lazy" alt="Creative 111">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (112).png" target="_blank">
+          <img src="assets/creative/creative (112).png" loading="lazy" alt="Creative 112">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (113).png" target="_blank">
+          <img src="assets/creative/creative (113).png" loading="lazy" alt="Creative 113">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (114).png" target="_blank">
+          <img src="assets/creative/creative (114).png" loading="lazy" alt="Creative 114">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (115).png" target="_blank">
+          <img src="assets/creative/creative (115).png" loading="lazy" alt="Creative 115">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (116).png" target="_blank">
+          <img src="assets/creative/creative (116).png" loading="lazy" alt="Creative 116">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (117).png" target="_blank">
+          <img src="assets/creative/creative (117).png" loading="lazy" alt="Creative 117">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (118).png" target="_blank">
+          <img src="assets/creative/creative (118).png" loading="lazy" alt="Creative 118">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (119).png" target="_blank">
+          <img src="assets/creative/creative (119).png" loading="lazy" alt="Creative 119">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (120).png" target="_blank">
+          <img src="assets/creative/creative (120).png" loading="lazy" alt="Creative 120">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (121).png" target="_blank">
+          <img src="assets/creative/creative (121).png" loading="lazy" alt="Creative 121">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (122).png" target="_blank">
+          <img src="assets/creative/creative (122).png" loading="lazy" alt="Creative 122">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (123).png" target="_blank">
+          <img src="assets/creative/creative (123).png" loading="lazy" alt="Creative 123">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (124).png" target="_blank">
+          <img src="assets/creative/creative (124).png" loading="lazy" alt="Creative 124">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (125).png" target="_blank">
+          <img src="assets/creative/creative (125).png" loading="lazy" alt="Creative 125">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (126).png" target="_blank">
+          <img src="assets/creative/creative (126).png" loading="lazy" alt="Creative 126">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (127).png" target="_blank">
+          <img src="assets/creative/creative (127).png" loading="lazy" alt="Creative 127">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (128).png" target="_blank">
+          <img src="assets/creative/creative (128).png" loading="lazy" alt="Creative 128">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (129).png" target="_blank">
+          <img src="assets/creative/creative (129).png" loading="lazy" alt="Creative 129">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (130).png" target="_blank">
+          <img src="assets/creative/creative (130).png" loading="lazy" alt="Creative 130">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (131).png" target="_blank">
+          <img src="assets/creative/creative (131).png" loading="lazy" alt="Creative 131">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (132).png" target="_blank">
+          <img src="assets/creative/creative (132).png" loading="lazy" alt="Creative 132">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (133).png" target="_blank">
+          <img src="assets/creative/creative (133).png" loading="lazy" alt="Creative 133">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (134).png" target="_blank">
+          <img src="assets/creative/creative (134).png" loading="lazy" alt="Creative 134">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (135).png" target="_blank">
+          <img src="assets/creative/creative (135).png" loading="lazy" alt="Creative 135">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (136).png" target="_blank">
+          <img src="assets/creative/creative (136).png" loading="lazy" alt="Creative 136">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (137).png" target="_blank">
+          <img src="assets/creative/creative (137).png" loading="lazy" alt="Creative 137">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (138).png" target="_blank">
+          <img src="assets/creative/creative (138).png" loading="lazy" alt="Creative 138">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (139).png" target="_blank">
+          <img src="assets/creative/creative (139).png" loading="lazy" alt="Creative 139">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (140).png" target="_blank">
+          <img src="assets/creative/creative (140).png" loading="lazy" alt="Creative 140">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (141).png" target="_blank">
+          <img src="assets/creative/creative (141).png" loading="lazy" alt="Creative 141">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (142).png" target="_blank">
+          <img src="assets/creative/creative (142).png" loading="lazy" alt="Creative 142">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (143).png" target="_blank">
+          <img src="assets/creative/creative (143).png" loading="lazy" alt="Creative 143">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (144).png" target="_blank">
+          <img src="assets/creative/creative (144).png" loading="lazy" alt="Creative 144">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (145).png" target="_blank">
+          <img src="assets/creative/creative (145).png" loading="lazy" alt="Creative 145">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (146).png" target="_blank">
+          <img src="assets/creative/creative (146).png" loading="lazy" alt="Creative 146">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (147).png" target="_blank">
+          <img src="assets/creative/creative (147).png" loading="lazy" alt="Creative 147">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (148).png" target="_blank">
+          <img src="assets/creative/creative (148).png" loading="lazy" alt="Creative 148">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (149).png" target="_blank">
+          <img src="assets/creative/creative (149).png" loading="lazy" alt="Creative 149">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (150).png" target="_blank">
+          <img src="assets/creative/creative (150).png" loading="lazy" alt="Creative 150">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (151).png" target="_blank">
+          <img src="assets/creative/creative (151).png" loading="lazy" alt="Creative 151">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (152).png" target="_blank">
+          <img src="assets/creative/creative (152).png" loading="lazy" alt="Creative 152">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (153).png" target="_blank">
+          <img src="assets/creative/creative (153).png" loading="lazy" alt="Creative 153">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (154).png" target="_blank">
+          <img src="assets/creative/creative (154).png" loading="lazy" alt="Creative 154">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (155).png" target="_blank">
+          <img src="assets/creative/creative (155).png" loading="lazy" alt="Creative 155">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (156).png" target="_blank">
+          <img src="assets/creative/creative (156).png" loading="lazy" alt="Creative 156">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (157).png" target="_blank">
+          <img src="assets/creative/creative (157).png" loading="lazy" alt="Creative 157">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (158).png" target="_blank">
+          <img src="assets/creative/creative (158).png" loading="lazy" alt="Creative 158">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (159).png" target="_blank">
+          <img src="assets/creative/creative (159).png" loading="lazy" alt="Creative 159">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (160).png" target="_blank">
+          <img src="assets/creative/creative (160).png" loading="lazy" alt="Creative 160">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (161).png" target="_blank">
+          <img src="assets/creative/creative (161).png" loading="lazy" alt="Creative 161">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (162).png" target="_blank">
+          <img src="assets/creative/creative (162).png" loading="lazy" alt="Creative 162">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (163).png" target="_blank">
+          <img src="assets/creative/creative (163).png" loading="lazy" alt="Creative 163">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (164).png" target="_blank">
+          <img src="assets/creative/creative (164).png" loading="lazy" alt="Creative 164">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (165).png" target="_blank">
+          <img src="assets/creative/creative (165).png" loading="lazy" alt="Creative 165">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (166).png" target="_blank">
+          <img src="assets/creative/creative (166).png" loading="lazy" alt="Creative 166">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (167).png" target="_blank">
+          <img src="assets/creative/creative (167).png" loading="lazy" alt="Creative 167">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (168).png" target="_blank">
+          <img src="assets/creative/creative (168).png" loading="lazy" alt="Creative 168">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (169).png" target="_blank">
+          <img src="assets/creative/creative (169).png" loading="lazy" alt="Creative 169">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (170).png" target="_blank">
+          <img src="assets/creative/creative (170).png" loading="lazy" alt="Creative 170">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (171).png" target="_blank">
+          <img src="assets/creative/creative (171).png" loading="lazy" alt="Creative 171">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (172).png" target="_blank">
+          <img src="assets/creative/creative (172).png" loading="lazy" alt="Creative 172">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (173).png" target="_blank">
+          <img src="assets/creative/creative (173).png" loading="lazy" alt="Creative 173">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (174).png" target="_blank">
+          <img src="assets/creative/creative (174).png" loading="lazy" alt="Creative 174">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (175).png" target="_blank">
+          <img src="assets/creative/creative (175).png" loading="lazy" alt="Creative 175">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (176).png" target="_blank">
+          <img src="assets/creative/creative (176).png" loading="lazy" alt="Creative 176">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (177).png" target="_blank">
+          <img src="assets/creative/creative (177).png" loading="lazy" alt="Creative 177">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (178).png" target="_blank">
+          <img src="assets/creative/creative (178).png" loading="lazy" alt="Creative 178">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (179).png" target="_blank">
+          <img src="assets/creative/creative (179).png" loading="lazy" alt="Creative 179">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (180).png" target="_blank">
+          <img src="assets/creative/creative (180).png" loading="lazy" alt="Creative 180">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (181).png" target="_blank">
+          <img src="assets/creative/creative (181).png" loading="lazy" alt="Creative 181">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (182).png" target="_blank">
+          <img src="assets/creative/creative (182).png" loading="lazy" alt="Creative 182">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (183).png" target="_blank">
+          <img src="assets/creative/creative (183).png" loading="lazy" alt="Creative 183">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (184).png" target="_blank">
+          <img src="assets/creative/creative (184).png" loading="lazy" alt="Creative 184">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (185).png" target="_blank">
+          <img src="assets/creative/creative (185).png" loading="lazy" alt="Creative 185">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (186).png" target="_blank">
+          <img src="assets/creative/creative (186).png" loading="lazy" alt="Creative 186">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (187).png" target="_blank">
+          <img src="assets/creative/creative (187).png" loading="lazy" alt="Creative 187">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (188).png" target="_blank">
+          <img src="assets/creative/creative (188).png" loading="lazy" alt="Creative 188">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (189).png" target="_blank">
+          <img src="assets/creative/creative (189).png" loading="lazy" alt="Creative 189">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (190).png" target="_blank">
+          <img src="assets/creative/creative (190).png" loading="lazy" alt="Creative 190">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (191).png" target="_blank">
+          <img src="assets/creative/creative (191).png" loading="lazy" alt="Creative 191">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (192).png" target="_blank">
+          <img src="assets/creative/creative (192).png" loading="lazy" alt="Creative 192">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (193).png" target="_blank">
+          <img src="assets/creative/creative (193).png" loading="lazy" alt="Creative 193">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (194).png" target="_blank">
+          <img src="assets/creative/creative (194).png" loading="lazy" alt="Creative 194">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (195).png" target="_blank">
+          <img src="assets/creative/creative (195).png" loading="lazy" alt="Creative 195">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (196).png" target="_blank">
+          <img src="assets/creative/creative (196).png" loading="lazy" alt="Creative 196">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (197).png" target="_blank">
+          <img src="assets/creative/creative (197).png" loading="lazy" alt="Creative 197">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (198).png" target="_blank">
+          <img src="assets/creative/creative (198).png" loading="lazy" alt="Creative 198">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (199).png" target="_blank">
+          <img src="assets/creative/creative (199).png" loading="lazy" alt="Creative 199">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (200).png" target="_blank">
+          <img src="assets/creative/creative (200).png" loading="lazy" alt="Creative 200">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (201).png" target="_blank">
+          <img src="assets/creative/creative (201).png" loading="lazy" alt="Creative 201">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (202).png" target="_blank">
+          <img src="assets/creative/creative (202).png" loading="lazy" alt="Creative 202">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (203).png" target="_blank">
+          <img src="assets/creative/creative (203).png" loading="lazy" alt="Creative 203">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (204).png" target="_blank">
+          <img src="assets/creative/creative (204).png" loading="lazy" alt="Creative 204">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (205).png" target="_blank">
+          <img src="assets/creative/creative (205).png" loading="lazy" alt="Creative 205">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (206).png" target="_blank">
+          <img src="assets/creative/creative (206).png" loading="lazy" alt="Creative 206">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (207).png" target="_blank">
+          <img src="assets/creative/creative (207).png" loading="lazy" alt="Creative 207">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (208).png" target="_blank">
+          <img src="assets/creative/creative (208).png" loading="lazy" alt="Creative 208">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (209).png" target="_blank">
+          <img src="assets/creative/creative (209).png" loading="lazy" alt="Creative 209">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (210).png" target="_blank">
+          <img src="assets/creative/creative (210).png" loading="lazy" alt="Creative 210">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (211).png" target="_blank">
+          <img src="assets/creative/creative (211).png" loading="lazy" alt="Creative 211">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (212).png" target="_blank">
+          <img src="assets/creative/creative (212).png" loading="lazy" alt="Creative 212">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (213).png" target="_blank">
+          <img src="assets/creative/creative (213).png" loading="lazy" alt="Creative 213">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (214).png" target="_blank">
+          <img src="assets/creative/creative (214).png" loading="lazy" alt="Creative 214">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (215).png" target="_blank">
+          <img src="assets/creative/creative (215).png" loading="lazy" alt="Creative 215">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (216).png" target="_blank">
+          <img src="assets/creative/creative (216).png" loading="lazy" alt="Creative 216">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (217).png" target="_blank">
+          <img src="assets/creative/creative (217).png" loading="lazy" alt="Creative 217">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (218).png" target="_blank">
+          <img src="assets/creative/creative (218).png" loading="lazy" alt="Creative 218">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (219).png" target="_blank">
+          <img src="assets/creative/creative (219).png" loading="lazy" alt="Creative 219">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (220).png" target="_blank">
+          <img src="assets/creative/creative (220).png" loading="lazy" alt="Creative 220">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (221).png" target="_blank">
+          <img src="assets/creative/creative (221).png" loading="lazy" alt="Creative 221">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (222).png" target="_blank">
+          <img src="assets/creative/creative (222).png" loading="lazy" alt="Creative 222">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (223).png" target="_blank">
+          <img src="assets/creative/creative (223).png" loading="lazy" alt="Creative 223">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (224).png" target="_blank">
+          <img src="assets/creative/creative (224).png" loading="lazy" alt="Creative 224">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (225).png" target="_blank">
+          <img src="assets/creative/creative (225).png" loading="lazy" alt="Creative 225">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (226).png" target="_blank">
+          <img src="assets/creative/creative (226).png" loading="lazy" alt="Creative 226">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (227).png" target="_blank">
+          <img src="assets/creative/creative (227).png" loading="lazy" alt="Creative 227">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (228).png" target="_blank">
+          <img src="assets/creative/creative (228).png" loading="lazy" alt="Creative 228">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (229).png" target="_blank">
+          <img src="assets/creative/creative (229).png" loading="lazy" alt="Creative 229">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (230).png" target="_blank">
+          <img src="assets/creative/creative (230).png" loading="lazy" alt="Creative 230">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (231).png" target="_blank">
+          <img src="assets/creative/creative (231).png" loading="lazy" alt="Creative 231">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (232).png" target="_blank">
+          <img src="assets/creative/creative (232).png" loading="lazy" alt="Creative 232">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (233).png" target="_blank">
+          <img src="assets/creative/creative (233).png" loading="lazy" alt="Creative 233">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (234).png" target="_blank">
+          <img src="assets/creative/creative (234).png" loading="lazy" alt="Creative 234">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (235).png" target="_blank">
+          <img src="assets/creative/creative (235).png" loading="lazy" alt="Creative 235">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (236).png" target="_blank">
+          <img src="assets/creative/creative (236).png" loading="lazy" alt="Creative 236">
+        </a>
+        <a class="creative-card" href="assets/creative/creative (237).png" target="_blank">
+          <img src="assets/creative/creative (237).png" loading="lazy" alt="Creative 237">
+        </a>
+    </div>
+
+    <div class="tab-panel video-grid" id="videos">
+        <div class="video-card">
+          <video src="assets/videos/video (1).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (2).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (3).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (4).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (5).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (6).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (7).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (8).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (9).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (10).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (11).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (12).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (13).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (14).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (15).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (16).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (17).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (18).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (19).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (20).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (21).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (22).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (23).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (24).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (25).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (26).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (27).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (28).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (29).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (30).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (31).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (32).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (33).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (34).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (35).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (36).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (37).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (38).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (39).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (40).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (41).mp4" controls playsinline preload="metadata"></video>
+        </div>
+        <div class="video-card">
+          <video src="assets/videos/video (42).mp4" controls playsinline preload="metadata"></video>
+        </div>
+    </div>
+
+    <div class="tab-panel logo-grid" id="logos">
+        <a class="logo-card" href="assets/logos/logo (1).png" target="_blank">
+          <img src="assets/logos/logo (1).png" loading="lazy" alt="Logo 1">
+        </a>
+        <a class="logo-card" href="assets/logos/logo (2).png" target="_blank">
+          <img src="assets/logos/logo (2).png" loading="lazy" alt="Logo 2">
+        </a>
+        <a class="logo-card" href="assets/logos/logo (3).png" target="_blank">
+          <img src="assets/logos/logo (3).png" loading="lazy" alt="Logo 3">
+        </a>
+        <a class="logo-card" href="assets/logos/logo (4).png" target="_blank">
+          <img src="assets/logos/logo (4).png" loading="lazy" alt="Logo 4">
+        </a>
+        <a class="logo-card" href="assets/logos/logo (5).png" target="_blank">
+          <img src="assets/logos/logo (5).png" loading="lazy" alt="Logo 5">
+        </a>
+        <a class="logo-card" href="assets/logos/logo (6).png" target="_blank">
+          <img src="assets/logos/logo (6).png" loading="lazy" alt="Logo 6">
+        </a>
+        <a class="logo-card" href="assets/logos/logo (7).png" target="_blank">
+          <img src="assets/logos/logo (7).png" loading="lazy" alt="Logo 7">
+        </a>
+        <a class="logo-card" href="assets/logos/logo (8).png" target="_blank">
+          <img src="assets/logos/logo (8).png" loading="lazy" alt="Logo 8">
+        </a>
+    </div>
+
+    <div class="tab-panel banner-grid" id="banners">
+        <a class="banner-card" href="assets/banners/banner (1).png" target="_blank">
+          <img src="assets/banners/banner (1).png" loading="lazy" alt="Banner 1">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (2).png" target="_blank">
+          <img src="assets/banners/banner (2).png" loading="lazy" alt="Banner 2">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (3).png" target="_blank">
+          <img src="assets/banners/banner (3).png" loading="lazy" alt="Banner 3">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (4).png" target="_blank">
+          <img src="assets/banners/banner (4).png" loading="lazy" alt="Banner 4">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (5).png" target="_blank">
+          <img src="assets/banners/banner (5).png" loading="lazy" alt="Banner 5">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (6).png" target="_blank">
+          <img src="assets/banners/banner (6).png" loading="lazy" alt="Banner 6">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (7).png" target="_blank">
+          <img src="assets/banners/banner (7).png" loading="lazy" alt="Banner 7">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (8).png" target="_blank">
+          <img src="assets/banners/banner (8).png" loading="lazy" alt="Banner 8">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (9).png" target="_blank">
+          <img src="assets/banners/banner (9).png" loading="lazy" alt="Banner 9">
+        </a>
+        <a class="banner-card" href="assets/banners/banner (10).png" target="_blank">
+          <img src="assets/banners/banner (10).png" loading="lazy" alt="Banner 10">
+        </a>
+    </div>
+
+<div class="services-tags">
+      <span>Social Media Management</span><span>Graphic Design</span><span>Content Strategy</span>
+      <span>Reels &amp; Video Editing</span><span>Meta Ads</span><span>Shopify &amp; WooCommerce</span>
+      <span>WordPress Management</span><span>SEO Optimization</span><span>Product Listing</span>
+      <span>Branding &amp; Campaigns</span><span>Community Management</span>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">06 · SKILLS</span>
+      <h2>The toolkit behind the work.</h2>
+    </div>
+    <div class="skills-wrap">
+      <span class="pill">Project Management</span>
+      <span class="pill">Content Creation / Strategy</span>
+      <span class="pill">Social Media Management</span>
+      <span class="pill">Brand Management / LinkedIn</span>
+      <span class="pill">Meta Ads Management</span>
+      <span class="pill">AI-Assisted Content &amp; Video</span>
+      <span class="pill">WordPress &amp; SEO</span>
+      <span class="pill">Customer &amp; Chat Support</span>
+      <span class="pill">Time Management</span>
+      <span class="pill">Team Leadership</span>
+      <span class="pill">Effective Communication</span>
+      <span class="pill">Critical Thinking</span>
+      <span class="pill">E-Commerce Operations</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="contact-inner">
+        <div>
+          <h2>Let's manage your next launch.</h2>
+          <p>A content calendar that needs running, ads that need managing, or a six-person content team you don't have to hire yourself — I'm a message away.</p>
+        </div>
+        <ul class="contact-list">
+          <li><a href="mailto:abuzaryousaf667@gmail.com"><span><span class="label">EMAIL</span><br>abuzaryousaf667@gmail.com</span><span class="arrow">↗</span></a></li>
+          <li><a href="tel:+923302387965"><span><span class="label">PHONE</span><br>+92 330-2387965</span><span class="arrow">↗</span></a></li>
+          <li><a href="https://linkedin.com/in/abuzeryousaf" target="_blank" rel="noopener"><span><span class="label">LINKEDIN</span><br>linkedin.com/in/abuzeryousaf</span><span class="arrow">↗</span></a></li>
+          <li><a href="#"><span><span class="label">LOCATION</span><br>Ali View Garden, Lahore</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Abuzar Yousaf · Built for showing the work, not just talking about it.</footer>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.querySelector('.nav-links');
+  if(navToggle && navLinks){
+    navToggle.addEventListener('click', ()=>{
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+
+  // ---------- Auto thumbnail: grab a frame from the middle of each video as its poster ----------
+  document.querySelectorAll('.video-card video').forEach(video => {
+    video.addEventListener('loadedmetadata', function onMeta(){
+      video.removeEventListener('loadedmetadata', onMeta);
+      const mid = (video.duration && isFinite(video.duration)) ? video.duration / 2 : 1;
+      try { video.currentTime = mid; } catch(e) {}
+    });
+
+    video.addEventListener('seeked', function onSeeked(){
+      video.removeEventListener('seeked', onSeeked);
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        video.poster = canvas.toDataURL('image/jpeg', 0.82);
+      } catch(e) {
+        // capture blocked (e.g. file opened locally without a server) — video still plays fine, just no auto-thumbnail
+      }
+      video.currentTime = 0; // reset so playback starts from the beginning, not the middle
+    });
+  });
+</script>
 
 </body>
-
 </html>
