@@ -238,6 +238,28 @@
   .brand-card:hover{border-color:var(--coral); transform:translateY(-2px);}
   .brand-card span.name{font-size:0.92rem; font-weight:500;}
   .brand-card .arrow{color:var(--coral); font-size:1.1rem; flex:none;}
+  /* Multi-platform brand card — name + row of platform badges */
+  .brand-card-multi{
+    background:var(--paper-raise); border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; display:flex; flex-direction:column; gap:12px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .brand-card-multi:hover{border-color:var(--coral); transform:translateY(-2px);}
+  .brand-card-multi .name{font-size:0.92rem; font-weight:500;}
+  .brand-head{display:flex; align-items:center; gap:10px;}
+  .brand-logo{width:34px; height:34px; border-radius:8px; object-fit:contain; background:var(--paper); border:1px solid var(--line); flex:none;}
+  .plat-row{display:flex; gap:8px; flex-wrap:wrap;}
+  .plat{
+    width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+    color:#fff; text-decoration:none; transition:opacity .2s ease, transform .2s ease; flex:none;
+  }
+  .plat svg{width:16px; height:16px; fill:currentColor;}
+  .plat:hover{opacity:0.82; transform:translateY(-2px);}
+  .plat-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
+  .plat-fb{background:#1877F2;}
+  .plat-yt{background:#FF0000;}
+  .plat-tt{background:#000000;}
+  .plat-li{background:#0A66C2;}
   /* Creatives (images) — 4 per row on desktop */
   .creative-grid{grid-template-columns:repeat(4,1fr); gap:16px;}
   .creative-card{
@@ -401,6 +423,13 @@
 </style>
 </head>
 <body>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="ic-fb" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></symbol>
+  <symbol id="ic-ig" viewBox="0 0 24 24"><path d="M12 2c-2.72 0-3.06.01-4.12.06-1.07.05-1.79.22-2.43.47-.66.26-1.22.6-1.77 1.15-.55.55-.9 1.11-1.15 1.77-.25.64-.42 1.36-.47 2.43C2.01 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.07.22 1.79.47 2.43.26.66.6 1.22 1.15 1.77.55.55 1.11.9 1.77 1.15.64.25 1.36.42 2.43.47C8.94 21.99 9.28 22 12 22s3.06-.01 4.12-.06c1.07-.05 1.79-.22 2.43-.47.66-.26 1.22-.6 1.77-1.15.55-.55.9-1.11 1.15-1.77.25-.64.42-1.36.47-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.07-.22-1.79-.47-2.43-.26-.66-.6-1.22-1.15-1.77-.55-.55-1.11-.9-1.77-1.15-.64-.25-1.36-.42-2.43-.47C15.06 2.01 14.72 2 12 2zm0 1.8c2.67 0 2.99.01 4.04.06.98.04 1.5.21 1.85.34.47.18.8.4 1.15.75.35.35.57.68.75 1.15.13.36.29.88.34 1.85.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.98-.21 1.5-.34 1.85-.18.47-.4.8-.75 1.15-.35.35-.68.57-1.15.75-.36.13-.88.29-1.85.34-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.98-.04-1.5-.21-1.85-.34-.47-.18-.8-.4-1.15-.75-.35-.35-.57-.68-.75-1.15-.13-.36-.29-.88-.34-1.85-.05-1.05-.06-1.37-.06-4.04s.01-2.99.06-4.04c.04-.98.21-1.5.34-1.85.18-.47.4-.8.75-1.15.35-.35.68-.57 1.15-.75.36-.13.88-.29 1.85-.34 1.05-.05 1.37-.06 4.04-.06zm0 3.06a5.14 5.14 0 100 10.28 5.14 5.14 0 000-10.28zm0 8.48a3.34 3.34 0 110-6.68 3.34 3.34 0 010 6.68zm5.34-8.68a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></symbol>
+  <symbol id="ic-yt" viewBox="0 0 24 24"><path d="M23.5 6.5s-.23-1.64-.94-2.36c-.9-.94-1.9-.95-2.36-1C16.9 3 12 3 12 3h-.01s-4.9 0-8.2.15c-.46.05-1.46.06-2.36 1C.72 4.87.5 6.5.5 6.5S.25 8.42.25 10.35v1.8c0 1.93.25 3.85.25 3.85s.23 1.64.93 2.36c.9.95 2.08.92 2.6 1.02C5.9 19.5 12 19.55 12 19.55s4.9-.01 8.2-.16c.46-.06 1.46-.07 2.36-1.02.7-.72.94-2.36.94-2.36s.25-1.93.25-3.85v-1.8c0-1.93-.25-3.85-.25-3.85zM9.75 14.02V7.98L15.75 11l-6 3.02z"/></symbol>
+  <symbol id="ic-tt" viewBox="0 0 24 24"><path d="M16.5 2h-3.1v13.1a2.7 2.7 0 11-2.7-2.7c.24 0 .48.03.7.08V9.3a5.9 5.9 0 00-.7-.04A5.9 5.9 0 1016.6 15V8.3a7.9 7.9 0 004.6 1.48V6.68a4.8 4.8 0 01-4.7-4.68z"/></symbol>
+  <symbol id="ic-li" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.64h.05c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97V21H9z"/></symbol>
+</svg>
 
 <nav class="nav">
   <div class="wrap">
@@ -647,21 +676,200 @@
     </div>
 
     <div class="tab-panel brand-grid active" id="social">
-      <a class="brand-card" href="https://www.instagram.com/carepakistanofficial/" target="_blank" rel="noopener"><span class="name">Care Pakistan Official</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/elitesolutions.pk/" target="_blank" rel="noopener"><span class="name">Elite Solutions</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/7cars.ae" target="_blank" rel="noopener"><span class="name">7Cars UAE</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/alinadentalclinic/" target="_blank" rel="noopener"><span class="name">Alina Dental Clinic</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/anayaskitchenlahore/" target="_blank" rel="noopener"><span class="name">Anaya's Kitchen Lahore</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/vibes.bymhk/" target="_blank" rel="noopener"><span class="name">Vibes by MHK</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/halawasilk/" target="_blank" rel="noopener"><span class="name">Halawa Silk</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/teetokyo_/" target="_blank" rel="noopener"><span class="name">TeeTokyo</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/hadayahomeslahore" target="_blank" rel="noopener"><span class="name">Hadaya Homes Lahore</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/robust.com.pk" target="_blank" rel="noopener"><span class="name">Robust Pakistan</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/blackstonefoods.pk" target="_blank" rel="noopener"><span class="name">Blackstone Foods</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/hydrpak" target="_blank" rel="noopener"><span class="name">Hydrpak</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/dext.soft/" target="_blank" rel="noopener"><span class="name">DextSoft</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/dmca.pk" target="_blank" rel="noopener"><span class="name">DMCA Pakistan</span><span class="arrow">↗</span></a>
-      <a class="brand-card" href="https://www.instagram.com/bianaturalsofficial" target="_blank" rel="noopener"><span class="name">BIA Naturals</span><span class="arrow">↗</span></a>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/care-pakistan-official.webp" alt="Care Pakistan Official logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Care Pakistan Official</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/carepakistanofficial/" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/officialcarepakistan" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+          <a class="plat plat-li" href="https://www.linkedin.com/company/carecosmetics/" target="_blank" rel="noopener" title="LinkedIn"><svg><use href="#ic-li"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/elite-solutions.webp" alt="Elite Solutions logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Elite Solutions</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/elitesolutions.pk/" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/elitesolutionspak/" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+          <a class="plat plat-li" href="https://www.linkedin.com/company/elitesolutionspk/" target="_blank" rel="noopener" title="LinkedIn"><svg><use href="#ic-li"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/7cars-uae.webp" alt="7Cars UAE logo" loading="lazy" onerror="this.style.display='none'"><span class="name">7Cars UAE</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/7cars.ae" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/7cars.ae" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/alina-dental-clinic.webp" alt="Alina Dental Clinic logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Alina Dental Clinic</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/alinadentalclinic/" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/Alinadentalclinic/" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/anayas-kitchen-lahore.webp" alt="Anaya's Kitchen Lahore logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Anaya's Kitchen Lahore</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/anayaskitchenlahore/" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/anayaskit" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/vibes-by-mhk.webp" alt="Vibes by MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Vibes by MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/vibes.bymhk/" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/vibesbymhkofficial" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+          <a class="plat plat-yt" href="https://www.youtube.com/@VibesByMHK" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+          <a class="plat plat-tt" href="https://www.tiktok.com/@vibes_bymhk" target="_blank" rel="noopener" title="TikTok"><svg><use href="#ic-tt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/halawa-silk.webp" alt="Halawa Silk logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Halawa Silk</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/halawasilk/" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/halawasilk/" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+          <a class="plat plat-yt" href="https://www.youtube.com/@HalawaSilk" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+          <a class="plat plat-tt" href="https://www.tiktok.com/@halawasilk" target="_blank" rel="noopener" title="TikTok"><svg><use href="#ic-tt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/teetokyo.webp" alt="TeeTokyo logo" loading="lazy" onerror="this.style.display='none'"><span class="name">TeeTokyo</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/teetokyo_/" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/profile.php?id=61585456144139" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/hadaya-homes-lahore.webp" alt="Hadaya Homes Lahore logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Hadaya Homes Lahore</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/hadayahomeslahore" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/profile.php?id=100094016972705" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/robust-pakistan.webp" alt="Robust Pakistan logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Robust Pakistan</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/robust.com.pk" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/blackstone-foods.webp" alt="Blackstone Foods logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Blackstone Foods</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/blackstonefoods.pk" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/profile.php?id=61585857871712" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+          <a class="plat plat-li" href="https://www.linkedin.com/company/blackstonefoods/" target="_blank" rel="noopener" title="LinkedIn"><svg><use href="#ic-li"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/hydrpak.webp" alt="Hydrpak logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Hydrpak</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/hydrpak" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/dextsoft.webp" alt="DextSoft logo" loading="lazy" onerror="this.style.display='none'"><span class="name">DextSoft</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/dext.soft/" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/dextsoftt/" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/dmca-pakistan.webp" alt="DMCA Pakistan logo" loading="lazy" onerror="this.style.display='none'"><span class="name">DMCA Pakistan</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/dmca.pk" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+          <a class="plat plat-fb" href="https://www.facebook.com/dmca.pk/" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/bia-naturals.webp" alt="BIA Naturals logo" loading="lazy" onerror="this.style.display='none'"><span class="name">BIA Naturals</span></div>
+        <div class="plat-row">
+          <a class="plat plat-ig" href="https://www.instagram.com/bianaturalsofficial" target="_blank" rel="noopener" title="Instagram"><svg><use href="#ic-ig"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/ary-sportswear.webp" alt="ARY Sportswear logo" loading="lazy" onerror="this.style.display='none'"><span class="name">ARY Sportswear</span></div>
+        <div class="plat-row">
+          <a class="plat plat-fb" href="https://www.facebook.com/arysportswear" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/ethisol.webp" alt="Ethisol logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Ethisol</span></div>
+        <div class="plat-row">
+          <a class="plat plat-fb" href="https://www.facebook.com/Ethisol.uk/" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+          <a class="plat plat-li" href="https://www.linkedin.com/company/ethisol/" target="_blank" rel="noopener" title="LinkedIn"><svg><use href="#ic-li"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/umrahkonnect.webp" alt="UmrahKonnect logo" loading="lazy" onerror="this.style.display='none'"><span class="name">UmrahKonnect</span></div>
+        <div class="plat-row">
+          <a class="plat plat-li" href="https://www.linkedin.com/company/umrahkonnect/" target="_blank" rel="noopener" title="LinkedIn"><svg><use href="#ic-li"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/hadaya-living.webp" alt="Hadaya Living logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Hadaya Living</span></div>
+        <div class="plat-row">
+          <a class="plat plat-fb" href="https://www.facebook.com/hadayaliving" target="_blank" rel="noopener" title="Facebook"><svg><use href="#ic-fb"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/fnf-stories-official.webp" alt="FNF Stories Official logo" loading="lazy" onerror="this.style.display='none'"><span class="name">FNF Stories Official</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@FNFStoriesOfficial" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/storytime-by-mhk.webp" alt="Storytime by MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Storytime by MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@storytimebymhk7553" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/famous-personalities-by-mhk.webp" alt="Famous Personalities by MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Famous Personalities by MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@famouspersonalitiesbymhk5607" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/tech-review-by-mhk.webp" alt="Tech Review by MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Tech Review by MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@techreviewbymhk4483" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/crypto-by-mhk.webp" alt="Crypto by MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Crypto by MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@cryptobymhk4983" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/interesting-facts-by-mhk.webp" alt="Interesting Facts by MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Interesting Facts by MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@interestingfactsbymhk9813" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/movies-by-mhk.webp" alt="Movies by MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Movies by MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@MoviesbyM.H.K-xs5rk" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/fun-time-with-mhk.webp" alt="Fun Time with MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Fun Time with MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@funtimewithmhk-yp8tp" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/islamic-knowledge.webp" alt="Islamic Knowledge logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Islamic Knowledge</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@IslamicKnowledge_0024" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
+      <div class="brand-card-multi">
+        <div class="brand-head"><img class="brand-logo" src="company-logos/online-earning-tips-by-mhk.webp" alt="Online Earning Tips by MHK logo" loading="lazy" onerror="this.style.display='none'"><span class="name">Online Earning Tips by MHK</span></div>
+        <div class="plat-row">
+          <a class="plat plat-yt" href="https://www.youtube.com/@OnlineEarningTipsByMHK" target="_blank" rel="noopener" title="YouTube"><svg><use href="#ic-yt"></use></svg></a>
+        </div>
+      </div>
     </div>
 
     <div class="tab-panel brand-grid" id="web">
@@ -1401,130 +1609,130 @@
 
     <div class="tab-panel video-grid" id="videos">
         <div class="video-card">
-          <video src="assets/videos/video (1).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (1).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (2).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (2).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (3).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (3).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (4).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (4).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (5).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (5).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (6).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (6).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (7).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (7).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (8).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (8).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (9).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (9).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (10).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (10).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (11).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (11).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (12).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (12).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (13).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (13).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (14).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (14).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (15).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (15).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (16).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (16).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (17).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (17).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (18).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (18).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (19).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (19).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (20).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (20).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (21).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (21).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (22).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (22).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (23).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (23).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (24).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (24).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (25).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (25).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (26).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (26).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (27).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (27).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (28).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (28).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (29).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (29).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (30).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (30).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (31).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (31).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (32).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (32).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (33).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (33).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (34).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (34).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (35).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (35).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (36).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (36).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (37).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (37).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (38).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (38).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (39).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (39).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (40).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (40).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (41).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (41).webm" controls playsinline preload="metadata"></video>
         </div>
         <div class="video-card">
-          <video src="assets/videos/video (42).mp4" controls playsinline preload="metadata"></video>
+          <video src="assets/videos/video (42).webm" controls playsinline preload="metadata"></video>
         </div>
     </div>
 
@@ -1633,6 +1841,9 @@
           <li><a href="mailto:abuzaryousaf667@gmail.com"><span><span class="label">EMAIL</span><br>abuzaryousaf667@gmail.com</span><span class="arrow">↗</span></a></li>
           <li><a href="tel:+923302387965"><span><span class="label">PHONE</span><br>+92 330-2387965</span><span class="arrow">↗</span></a></li>
           <li><a href="https://linkedin.com/in/abuzaryousaf" target="_blank" rel="noopener"><span><span class="label">LINKEDIN</span><br>linkedin.com/in/abuzaryousaf</span><span class="arrow">↗</span></a></li>
+          <!-- Apna YouTube channel URL yahan daal kar is line ko uncomment kar dena:
+          <li><a href="YOUR_YOUTUBE_CHANNEL_URL" target="_blank" rel="noopener"><span><span class="label">YOUTUBE</span><br>youtube.com/@abuzaryousaf</span><span class="arrow">↗</span></a></li>
+          -->
           <li><a href="#"><span><span class="label">LOCATION</span><br>Ali View Garden, Lahore</span></a></li>
         </ul>
       </div>
