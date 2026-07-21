@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Abuzar Yousaf | Social Media & E-Commerce Manager</title>
 
-<!-- Fonts: Unbounded (Bold/Tech) & Inter (Clean/Readable) -->
+<!-- Fonts: Syne (Bold/Display) & Inter (Clean/Readable) & IBM Plex Mono (Labels) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Unbounded:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- GSAP & Lenis for World-Class Animations and Smooth Scroll -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -40,7 +40,7 @@
 
   /* --- CUSTOM CURSOR (DESKTOP ONLY) --- */
   @media (pointer: fine) {
-    html { cursor: none; }
+    html.cursor-active { cursor: none; }
     .cursor { position: fixed; top: 0; left: 0; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 100000; transition: width 0.3s, height 0.3s, background 0.3s; }
     .cursor-follower { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border: 1px solid rgba(255, 69, 0, 0.5); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 99999; transition: opacity 0.3s, transform 0.1s ease-out; }
     body.hovering .cursor { width: 60px; height: 60px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(2px); border: 1px solid var(--text-main); }
@@ -55,13 +55,13 @@
     position: fixed; inset: 0; background: var(--bg-dark); z-index: 999999;
     display: flex; align-items: center; justify-content: center; flex-direction: column;
   }
-  .loader h1 { font-family: 'Unbounded'; font-size: clamp(1.5rem, 4vw, 3rem); color: var(--text-main); overflow: hidden; text-align: center; }
+  .loader h1 { font-family: 'Syne'; font-size: clamp(1.5rem, 4vw, 3rem); color: var(--text-main); overflow: hidden; text-align: center; }
   .loader-text span { display: inline-block; transform: translateY(100%); }
   .loader-progress { width: 200px; height: 2px; background: var(--border); margin-top: 20px; position: relative; overflow: hidden; }
   .loader-bar { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--accent); }
 
   /* --- TYPOGRAPHY --- */
-  h1, h2, h3, h4 { font-family: 'Unbounded', sans-serif; text-transform: uppercase; line-height: 1.1; }
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; text-transform: uppercase; line-height: 1.1; }
   a { text-decoration: none; color: inherit; display: inline-block; cursor: pointer; }
   ul { list-style: none; }
 
@@ -72,7 +72,7 @@
     background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--border);
   }
-  .logo { font-family: 'Unbounded'; font-weight: 900; font-size: 1.5rem; color: #fff; letter-spacing: -1px; }
+  .logo { font-family: 'Syne'; font-weight: 900; font-size: 1.5rem; color: #fff; letter-spacing: -1px; }
   .logo span { color: var(--accent); }
   
   .nav-right { display: flex; align-items: center; gap: 20px; }
@@ -81,7 +81,7 @@
   .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s; }
   .nav-links a:hover::after { width: 100%; }
   
-  .hire-btn { font-family:'Unbounded'; font-size:0.85rem; border:1px solid #fff; padding:10px 24px; border-radius:50px; transition: 0.3s; }
+  .hire-btn { font-family:'Syne'; font-size:0.85rem; border:1px solid #fff; padding:10px 24px; border-radius:50px; transition: 0.3s; }
   .hire-btn:hover { background: var(--text-main); color: var(--bg-dark); }
   
   .mobile-contact-btn { display: none; }
@@ -108,7 +108,7 @@
   .section { padding: 100px 4vw; border-bottom: 1px solid var(--border); }
   
   .sec-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 60px; }
-  .sec-tag { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--accent); letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
+  .sec-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; font-weight: 500; color: var(--accent); letter-spacing: 2px; margin-bottom: 15px; text-transform: uppercase; display: flex; align-items: center; gap: 12px; }
   .sec-tag::before { content: ''; width: 30px; height: 1px; background: var(--accent); }
   .sec-header h2 { font-size: clamp(1.8rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; max-width: 900px; }
 
@@ -128,7 +128,7 @@
   .srv-item::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-light); transform: scaleY(0); transform-origin: bottom; transition: transform 0.5s; z-index: -1; }
   .srv-item:hover::before { transform: scaleY(1); transform-origin: top; }
   .srv-item:hover { padding-left: 20px; padding-right: 20px; border-color: transparent; }
-  .srv-num { font-family: 'Unbounded'; color: var(--text-dim); font-size: 1.2rem; }
+  .srv-num { font-family: 'IBM Plex Mono', monospace; color: var(--text-dim); font-size: 1.1rem; }
   .srv-title { font-size: clamp(1.3rem, 3vw, 2.5rem); font-weight: 600; }
   .srv-desc { font-size: 0.95rem; color: var(--text-dim); font-weight: 300; line-height: 1.5; }
   .srv-item:hover .srv-num, .srv-item:hover .srv-title { color: var(--accent); }
@@ -136,8 +136,8 @@
   /* --- EXPERIENCE --- */
   .exp-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
   .exp-card { display: grid; grid-template-columns: 1fr 3fr; gap: 30px; padding: 40px 0; border-top: 1px solid var(--border); }
-  .exp-meta { font-family: 'Unbounded'; }
-  .exp-date { color: var(--accent); font-size: 0.9rem; margin-bottom: 10px; }
+  .exp-meta { font-family: 'Syne'; }
+  .exp-date { font-family: 'IBM Plex Mono', monospace; color: var(--accent); font-size: 0.85rem; letter-spacing: 0.02em; margin-bottom: 10px; }
   .exp-company { font-size: clamp(1.8rem, 4vw, 2.2rem); font-weight: 800; display: flex; align-items: center; gap: 15px; }
   .exp-details h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); margin-bottom: 15px; color: var(--text-main); }
   .exp-details ul { margin-left: 20px; color: var(--text-dim); }
@@ -145,7 +145,7 @@
 
   /* --- PORTFOLIO SYSTEM --- */
   .filter-wrap { display: flex; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
-  .filter-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 10px 24px; border-radius: 100px; font-family: 'Unbounded'; font-size: 0.8rem; transition: 0.3s; }
+  .filter-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 10px 24px; border-radius: 100px; font-family: 'Syne'; font-size: 0.8rem; transition: 0.3s; }
   .filter-btn.active { background: var(--accent); border-color: var(--accent); color: var(--bg-dark); }
   
   .port-panel { display: none; }
@@ -195,12 +195,12 @@
 
   /* --- FOOTER --- */
   .footer { padding: 80px 4vw 40px; text-align: center; border-top: 1px solid var(--border); overflow: hidden; }
-  .huge-text { font-family: 'Unbounded'; font-size: clamp(3rem, 12vw, 15rem); font-weight: 900; line-height: 0.8; color: var(--bg-light); -webkit-text-stroke: 1px var(--border); transition: 0.4s; margin-bottom: 40px; display: block; word-break: break-word;}
+  .huge-text { font-family: 'Syne'; font-size: clamp(3rem, 12vw, 15rem); font-weight: 900; line-height: 0.8; color: var(--bg-light); -webkit-text-stroke: 1px var(--border); transition: 0.4s; margin-bottom: 40px; display: block; word-break: break-word;}
   .huge-text:hover { color: var(--accent); -webkit-text-stroke: 0px; }
   
   .footer-links { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 25px; flex-wrap: wrap; gap: 20px; }
   .social-big { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-  .social-big a { font-size: 1rem; font-family: 'Unbounded'; transition: 0.3s; }
+  .social-big a { font-size: 1rem; font-family: 'Syne'; transition: 0.3s; }
   .social-big a:hover { color: var(--accent); }
   .copyright { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; }
 
@@ -367,7 +367,7 @@
         <div class="exp-company">Ethisol</div>
       </div>
       <div class="exp-details">
-        <h4>Lead Social Media & Project Manager</h4>
+        <h4>Social Media Manager / Executive</h4>
         <ul>
           <li>Spearheaded overarching digital strategy for 10+ B2B and B2C client accounts.</li>
           <li>Orchestrated teams to produce 200+ visual assets and 50+ viral reels.</li>
@@ -395,7 +395,7 @@
         <div class="exp-company">Vibes By MHK</div>
       </div>
       <div class="exp-details">
-        <h4>E-Commerce Manager & Web Developer</h4>
+        <h4>WordPress & E-Commerce Operations Executive</h4>
         <ul>
           <li>Led the deployment of 15+ custom WordPress and Shopify platforms.</li>
           <li>Oversaw digital merchandising, maintaining 1,000+ active product listings.</li>
@@ -409,7 +409,7 @@
         <div class="exp-company">Leomart</div>
       </div>
       <div class="exp-details">
-        <h4>Social Media & Support Executive</h4>
+        <h4>Social Media & Customer Support Executive</h4>
         <ul>
           <li>Initiated digital campaigns and managed daily organic content.</li>
           <li>Resolved inquiries and managed CRM tools to process 300+ orders.</li>
@@ -557,10 +557,19 @@
 
 
   // --- 3. ANIMATIONS & INTERACTIONS ---
-  
-  if (window.innerWidth > 768) {
+  const gsapReady = typeof gsap !== 'undefined';
+
+  // Safety net: no matter what happens with the GSAP/Lenis CDNs below,
+  // never leave a visitor stuck behind the loader with a hidden cursor.
+  setTimeout(() => {
+    const loaderEl = document.querySelector('.loader');
+    if (loaderEl && loaderEl.style.display !== 'none') loaderEl.style.display = 'none';
+  }, 4000);
+
+  if (gsapReady && window.innerWidth > 768) {
     const cursor = document.querySelector('.cursor');
     const follower = document.querySelector('.cursor-follower');
+    document.documentElement.classList.add('cursor-active');
     window.addEventListener('mousemove', (e) => {
       gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
       gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.5, ease: "power2.out" });
@@ -575,30 +584,42 @@
     });
   }
 
-  // Preloader animation - Hides completely after finishing so clicks are not blocked
-  const tl = gsap.timeline({
-    onComplete: () => {
+  if (gsapReady) {
+    try {
+      // Preloader animation - Hides completely after finishing so clicks are not blocked
+      const tl = gsap.timeline({
+        onComplete: () => {
+          document.querySelector('.loader').style.display = 'none';
+        }
+      });
+
+      tl.to('.loader-bar', { width: '100%', duration: 1.5, ease: "power3.inOut" })
+        .to('.loader-text span', { y: 0, duration: 0.8, ease: "power4.out" }, "-=0.5")
+        .to('.loader', { yPercent: -100, duration: 1, ease: "expo.inOut", delay: 0.3 })
+        .from('.hero-title .line span', { yPercent: 100, duration: 1.2, stagger: 0.1, ease: "expo.out" }, "-=0.5")
+        .from('.hero-subtitle, .hero-desc, .hero-stats', { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: "power3.out" }, "-=0.8");
+
+      if (typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        if (typeof Lenis !== 'undefined') {
+          const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+          lenis.on('scroll', ScrollTrigger.update);
+          gsap.ticker.add((time) => lenis.raf(time * 1000));
+          gsap.ticker.lagSmoothing(0);
+        }
+        gsap.utils.toArray('.sec-header').forEach(h => {
+          gsap.from(h, { scrollTrigger: { trigger: h, start: "top 85%" }, opacity: 0, y: 40, duration: 1, ease: "power3.out" });
+        });
+      }
+
+      gsap.to('.marquee', { xPercent: -50, ease: "none", duration: 15, repeat: -1 });
+    } catch (err) {
       document.querySelector('.loader').style.display = 'none';
     }
-  });
-  
-  tl.to('.loader-bar', { width: '100%', duration: 1.5, ease: "power3.inOut" })
-    .to('.loader-text span', { y: 0, duration: 0.8, ease: "power4.out" }, "-=0.5")
-    .to('.loader', { yPercent: -100, duration: 1, ease: "expo.inOut", delay: 0.3 })
-    .from('.hero-title .line span', { yPercent: 100, duration: 1.2, stagger: 0.1, ease: "expo.out" }, "-=0.5")
-    .from('.hero-subtitle, .hero-desc, .hero-stats', { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: "power3.out" }, "-=0.8");
-
-  gsap.registerPlugin(ScrollTrigger);
-  const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => lenis.raf(time * 1000));
-  gsap.ticker.lagSmoothing(0);
-
-  gsap.utils.toArray('.sec-header').forEach(h => {
-    gsap.from(h, { scrollTrigger: { trigger: h, start: "top 85%" }, opacity: 0, y: 40, duration: 1, ease: "power3.out" });
-  });
-
-  gsap.to('.marquee', { xPercent: -50, ease: "none", duration: 15, repeat: -1 });
+  } else {
+    // GSAP CDN failed to load — reveal the page immediately, no animation, no stuck screen
+    document.querySelector('.loader').style.display = 'none';
+  }
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
