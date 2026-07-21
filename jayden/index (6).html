@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abuzar Yousaf | Social Media & E-Commerce Manager</title>
+
+<!-- Fonts: Unbounded (Bold/Tech) & Inter (Clean/Readable) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Unbounded:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+
+<!-- GSAP & Lenis for World-Class Animations and Smooth Scroll -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+<style>
+  :root {
+    --bg-dark: #050505;
+    --bg-light: #111111;
+    --text-main: #F4F4F5;
+    --text-dim: #A1A1AA;
+    --accent: #FF4500; /* Electric Orange - Aggressive & High Converting */
+    --border: rgba(255, 255, 255, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { background: var(--bg-dark); cursor: none; }
+  
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* --- CUSTOM CURSOR --- */
+  .cursor {
+    position: fixed; top: 0; left: 0; width: 12px; height: 12px;
+    background: var(--accent); border-radius: 50%;
+    transform: translate(-50%, -50%); pointer-events: none; z-index: 10000;
+    transition: width 0.3s, height 0.3s, background 0.3s;
+  }
+  .cursor-follower {
+    position: fixed; top: 0; left: 0; width: 40px; height: 40px;
+    border: 1px solid rgba(255, 69, 0, 0.5); border-radius: 50%;
+    transform: translate(-50%, -50%); pointer-events: none; z-index: 9999;
+    transition: opacity 0.3s, transform 0.1s ease-out;
+  }
+  body.hovering .cursor { width: 60px; height: 60px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(2px); border: 1px solid var(--text-main); }
+  body.hovering .cursor-follower { opacity: 0; }
+
+  /* --- LOADER --- */
+  .loader {
+    position: fixed; inset: 0; background: var(--bg-dark); z-index: 99999;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+  }
+  .loader h1 { font-family: 'Unbounded'; font-size: 3vw; color: var(--text-main); overflow: hidden; }
+  .loader-text span { display: inline-block; transform: translateY(100%); }
+  .loader-progress { width: 200px; height: 2px; background: var(--border); margin-top: 20px; position: relative; overflow: hidden; }
+  .loader-bar { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--accent); }
+
+  /* --- TYPOGRAPHY --- */
+  h1, h2, h3, h4 { font-family: 'Unbounded', sans-serif; text-transform: uppercase; line-height: 1.1; }
+  a { text-decoration: none; color: inherit; display: inline-block; }
+  ul { list-style: none; }
+
+  /* --- NAVIGATION --- */
+  nav {
+    position: fixed; top: 0; width: 100%; padding: 2vw 4vw; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    mix-blend-mode: difference;
+  }
+  .logo { font-family: 'Unbounded'; font-weight: 900; font-size: 1.5rem; color: #fff; letter-spacing: -1px; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 3vw; }
+  .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; position: relative; color: #fff; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px; background: var(--accent); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .nav-links a:hover::after { width: 100%; }
+  .menu-btn { display: none; font-size: 1.5rem; color: #fff; cursor: pointer; }
+
+  /* --- HERO SECTION --- */
+  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 4vw; position: relative; overflow: hidden; }
+  .hero-subtitle { font-size: 1rem; color: var(--accent); letter-spacing: 3px; margin-bottom: 2vh; display: flex; align-items: center; gap: 10px; overflow: hidden; }
+  .hero-title { font-size: clamp(3rem, 7vw, 8rem); font-weight: 900; letter-spacing: -0.02em; color: var(--text-main); line-height: 0.95; margin-bottom: 4vh; }
+  .hero-title .line { overflow: hidden; }
+  .hero-title span { display: inline-block; }
+  .hero-desc { max-width: 700px; font-size: 1.1rem; color: var(--text-dim); font-weight: 300; line-height: 1.6; margin-bottom: 5vh; }
+  
+  .hero-stats { display: flex; gap: 4vw; border-top: 1px solid var(--border); padding-top: 3vh; }
+  .h-stat h4 { font-size: 2rem; color: var(--text-main); }
+  .h-stat p { font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* --- MARQUEE --- */
+  .marquee-wrapper { width: 100%; overflow: hidden; background: var(--accent); padding: 2vh 0; transform: rotate(-2deg) scale(1.05); margin: 5vh 0; }
+  .marquee { display: flex; white-space: nowrap; }
+  .marquee h2 { font-size: 3rem; color: var(--bg-dark); font-weight: 900; padding: 0 2vw; }
+
+  /* --- LAYOUT UTILS --- */
+  .section { padding: 15vh 4vw; border-bottom: 1px solid var(--border); }
+  
+  .sec-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 8vh; }
+  .sec-tag { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--accent); letter-spacing: 3px; margin-bottom: 15px; border: 1px solid var(--accent); padding: 6px 16px; border-radius: 50px; text-transform: uppercase; }
+  .sec-header h2 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; max-width: 900px; }
+
+  /* --- ABOUT / SKILLS --- */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; }
+  .about-text { font-size: 1.25rem; font-weight: 300; line-height: 1.6; color: var(--text-main); }
+  .about-text span { color: var(--text-dim); }
+  .skills-container { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 5vh; }
+  .skill-pill { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 12px 24px; border-radius: 100px; font-size: 0.9rem; transition: 0.4s; }
+  .skill-pill:hover { background: var(--text-main); color: var(--bg-dark); transform: scale(1.05); }
+
+  /* --- SERVICES --- */
+  .service-list { display: flex; flex-direction: column; }
+  .srv-item { border-top: 1px solid var(--border); padding: 4vh 0; display: grid; grid-template-columns: 0.5fr 2.5fr 1.5fr; align-items: center; transition: 0.4s; position: relative; overflow: hidden; }
+  .srv-item::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-light); transform: scaleY(0); transform-origin: bottom; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: -1; }
+  .srv-item:hover::before { transform: scaleY(1); transform-origin: top; }
+  .srv-item:hover { padding-left: 2vw; padding-right: 2vw; border-color: transparent; }
+  .srv-num { font-family: 'Unbounded'; color: var(--text-dim); font-size: 1.5rem; }
+  .srv-title { font-size: clamp(1.5rem, 3vw, 2.8rem); font-weight: 600; }
+  .srv-desc { font-size: 1rem; color: var(--text-dim); font-weight: 300; line-height: 1.5; }
+  .srv-item:hover .srv-num, .srv-item:hover .srv-title { color: var(--accent); }
+
+  /* --- EXPERIENCE TIMELINE --- */
+  .exp-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .exp-card { display: grid; grid-template-columns: 1fr 3fr; gap: 4vw; padding: 5vh 0; border-top: 1px solid var(--border); }
+  .exp-meta { font-family: 'Unbounded'; }
+  .exp-date { color: var(--accent); font-size: 1rem; margin-bottom: 10px; }
+  .exp-company { font-size: 2.2rem; font-weight: 800; display: flex; align-items: center; gap: 15px; }
+  .exp-details h4 { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-main); }
+  .exp-details ul { margin-left: 20px; list-style-type: square; color: var(--text-dim); }
+  .exp-details li { margin-bottom: 10px; font-size: 1.1rem; font-weight: 300; }
+
+  /* --- PORTFOLIO SYSTEM --- */
+  .filter-wrap { display: flex; gap: 15px; margin-bottom: 6vh; flex-wrap: wrap; }
+  .filter-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 12px 30px; border-radius: 100px; font-family: 'Unbounded'; font-size: 0.85rem; cursor: none; transition: 0.4s; }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: var(--bg-dark); }
+  
+  .port-panel { display: none; }
+  .port-panel.active { display: block; animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2vw; }
+  
+  .brand-card { 
+    background: var(--bg-light); border: 1px solid var(--border); border-radius: 20px; 
+    padding: 3.5vw 2vw; display: flex; flex-direction: column; gap: 24px; 
+    align-items: center; justify-content: center; text-align: center; transition: 0.5s; 
+  }
+  .brand-card:hover { transform: translateY(-8px); border-color: var(--accent); background: rgba(255,255,255,0.03); }
+  .bc-head h3 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; }
+  
+  .bc-socials { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .bc-socials a { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; transition: 0.3s; }
+  .bc-socials a:hover { transform: scale(1.1) translateY(-4px); }
+  .bg-ig { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+  .bg-fb { background: #1877F2; }
+  .bg-yt { background: #FF0000; }
+  .bg-tt { background: #000000; border: 1px solid #333; }
+  .bg-li { background: #0A66C2; }
+  
+  .web-card { 
+    background: var(--bg-light); border: 1px solid var(--border); border-radius: 20px; 
+    padding: 2.5vw; display: flex; align-items: center; justify-content: space-between; transition: 0.4s; 
+  }
+  .web-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+  .web-card h3 { font-size: 1.3rem; }
+  .web-card .arrow-btn { width: 45px; height: 45px; border-radius: 50%; background: var(--text-main); color: var(--bg-dark); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: 0.3s; }
+  .web-card:hover .arrow-btn { background: var(--accent); transform: rotate(45deg); }
+
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5vw; }
+  .media-card { position: relative; overflow: hidden; border-radius: 16px; aspect-ratio: 4/5; background: #111; border: 1px solid var(--border); }
+  .media-card img, .media-card video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .media-card:hover img, .media-card:hover video { transform: scale(1.05); }
+  .media-card.video { aspect-ratio: 9/16; }
+  .media-card.banner { aspect-ratio: 16/9; grid-column: span 2; }
+  @media(max-width:768px){ .media-card.banner { grid-column: span 1; } }
+  .media-card.logo-box { aspect-ratio: 1/1; background: #fff; padding: 25px; }
+  .media-card.logo-box img { object-fit: contain; filter: grayscale(100%); transition: 0.5s; }
+  .media-card.logo-box:hover img { filter: grayscale(0%); transform: scale(1.08); }
+
+  /* --- MASSIVE FOOTER CONTACT --- */
+  .footer { padding: 10vh 4vw 5vh; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+  .huge-text { font-family: 'Unbounded'; font-size: clamp(4rem, 15vw, 20rem); font-weight: 900; line-height: 0.8; color: var(--bg-light); -webkit-text-stroke: 1px var(--border); transition: 0.5s; margin-bottom: 5vh; display: block; }
+  .huge-text:hover { color: var(--accent); -webkit-text-stroke: 0px; transform: scale(1.02); }
+  
+  .footer-links { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 3vh; }
+  .social-big { display: flex; gap: 30px; }
+  .social-big a { font-size: 1.1rem; font-family: 'Unbounded'; transition: 0.3s; }
+  .social-big a:hover { color: var(--accent); }
+  .copyright { color: var(--text-dim); font-size: 0.9rem; }
+
+  /* --- RESPONSIVE ADJUSTMENTS --- */
+  @media (max-width: 1024px) {
+    .about-grid, .exp-card { grid-template-columns: 1fr; gap: 6vw; }
+    .srv-item { grid-template-columns: 1fr; gap: 20px; padding: 5vh 2vw; }
+    .srv-num { display: none; }
+    .brand-card { padding: 5vw 4vw; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 4vw; }
+    .nav-links { display: none; }
+    .menu-btn { display: block; }
+    .hero { text-align: left; }
+    .hero-stats { flex-direction: column; gap: 20px; }
+    .sec-header { margin-bottom: 6vh; }
+    .sec-tag { margin-bottom: 10px; }
+    .footer-links { flex-direction: column; gap: 30px; }
+    .cursor, .cursor-follower { display: none; } 
+    html { cursor: auto; }
+    .web-card { padding: 5vw 4vw; flex-direction: column; gap: 15px; text-align: center; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom Cinematic Loader -->
+<div class="loader">
+  <div class="loader-text"><h1><span>ABUZAR YOUSAF</span></h1></div>
+  <div class="loader-progress"><div class="loader-bar"></div></div>
+</div>
+
+<!-- Magnetic Cursor -->
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<nav>
+  <a href="#" class="logo magnetic">A.Yousaf<span>.</span></a>
+  <div class="nav-links">
+    <a href="#about" class="magnetic">About</a>
+    <a href="#services" class="magnetic">Expertise</a>
+    <a href="#experience" class="magnetic">Experience</a>
+    <a href="#portfolio" class="magnetic">Portfolio</a>
+  </div>
+  <a href="#contact" class="magnetic" style="font-family:'Unbounded'; font-size:0.85rem; border:1px solid #fff; padding:10px 24px; border-radius:50px;">HIRE ME</a>
+  <i class="ph ph-list menu-btn"></i>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-subtitle"><span><i class="ph-fill ph-sparkle"></i> AVAILABLE FOR FULL-TIME / CONTRACT ROLES</span></div>
+  <h1 class="hero-title">
+    <div class="line"><span>SOCIAL MEDIA</span></div>
+    <div class="line"><span style="color:var(--bg-dark); -webkit-text-stroke: 2px var(--text-main);">& E-COMMERCE</span></div>
+    <div class="line"><span>MANAGER.</span></div>
+  </h1>
+  <p class="hero-desc">I bridge the gap between audience engagement and scalable revenue. With 4+ years of expertise, I drive organic growth, manage profitable Meta Ad campaigns, and develop high-converting WordPress & Shopify stores.</p>
+  <div class="hero-stats">
+    <div class="h-stat"><h4>4+</h4><p>Years Experience</p></div>
+    <div class="h-stat"><h4>40+</h4><p>Brands Managed</p></div>
+    <div class="h-stat"><h4>50+</h4><p>Websites Built</p></div>
+  </div>
+</section>
+
+<!-- Infinite Marquee -->
+<div class="marquee-wrapper">
+  <div class="marquee">
+    <h2>SOCIAL MEDIA EXPERT <i class="ph-fill ph-star-four"></i> E-COMMERCE MANAGER <i class="ph-fill ph-star-four"></i> WORDPRESS DEVELOPER <i class="ph-fill ph-star-four"></i> META ADS SPECIALIST <i class="ph-fill ph-star-four"></i></h2>
+    <h2>SOCIAL MEDIA EXPERT <i class="ph-fill ph-star-four"></i> E-COMMERCE MANAGER <i class="ph-fill ph-star-four"></i> WORDPRESS DEVELOPER <i class="ph-fill ph-star-four"></i> META ADS SPECIALIST <i class="ph-fill ph-star-four"></i></h2>
+  </div>
+</div>
+
+<section id="about" class="section">
+  <div class="sec-header">
+    <div class="sec-tag">( 01 ) PROFESSIONAL SUMMARY</div>
+    <h2 class="reveal-text">The Hybrid Edge: Traffic Meets Conversion.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-img media-card">
+      <img src="assets/abuzar-photo.webp" alt="Abuzar Yousaf" style="filter: grayscale(100%) contrast(1.1);">
+    </div>
+    <div class="about-info">
+      <p class="about-text reveal-text">
+        The modern digital landscape requires more than just posting content—it requires a seamless funnel. <span>Since 2022, I have scaled 40+ brands by combining data-driven marketing with flawless customer experiences.</span><br><br>
+        Why hire two specialists when you can hire one? <span>I am a hybrid professional. I don't just drive social traffic; I build the destinations. With deep expertise in WordPress & Shopify development, I manage the entire lifecycle—processing 100+ daily orders smoothly.</span>
+      </p>
+      
+      <div class="skills-container">
+        <div class="skill-pill magnetic">Social Media Strategy</div>
+        <div class="skill-pill magnetic">Shopify / WooCommerce Management</div>
+        <div class="skill-pill magnetic">WordPress Development</div>
+        <div class="skill-pill magnetic">Meta Ads Manager</div>
+        <div class="skill-pill magnetic">Content Creation</div>
+        <div class="skill-pill magnetic">E-Commerce Operations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <div class="sec-header">
+    <div class="sec-tag">( 02 ) CORE COMPETENCIES</div>
+    <h2 class="reveal-text">What I Bring to Your Company.</h2>
+  </div>
+  <div class="service-list">
+    <div class="srv-item magnetic">
+      <div class="srv-num">01 /</div>
+      <div class="srv-title">Social Media Management</div>
+      <div class="srv-desc">Developing holistic content calendars, managing community engagement, and executing algorithmic growth strategies across Meta, TikTok, and LinkedIn.</div>
+    </div>
+    <div class="srv-item magnetic">
+      <div class="srv-num">02 /</div>
+      <div class="srv-title">E-Commerce Operations</div>
+      <div class="srv-desc">End-to-end management of online stores. Handling inventory, updating 1,000+ product SKUs, and overseeing smooth fulfillment for 100+ daily orders.</div>
+    </div>
+    <div class="srv-item magnetic">
+      <div class="srv-num">03 /</div>
+      <div class="srv-title">WordPress & Web Dev</div>
+      <div class="srv-desc">Architecting, designing, and optimizing highly responsive WordPress and Shopify websites focused on user experience and conversion rate optimization (CRO).</div>
+    </div>
+    <div class="srv-item magnetic">
+      <div class="srv-num">04 /</div>
+      <div class="srv-title">Paid Acquisition (Meta Ads)</div>
+      <div class="srv-desc">Planning and executing data-backed advertising campaigns. Continuously A/B testing creatives to lower CAC and maximize Return on Ad Spend (ROAS).</div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section">
+  <div class="sec-header">
+    <div class="sec-tag">( 03 ) CAREER HISTORY</div>
+    <h2 class="reveal-text">Proven Professional Experience.</h2>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-date">DEC 2025 — JUN 2026</div>
+        <div class="exp-company">Ethisol</div>
+      </div>
+      <div class="exp-details">
+        <h4>Lead Social Media & Project Manager</h4>
+        <ul>
+          <li>Spearheaded overarching digital strategy for 10+ B2B and B2C client accounts.</li>
+          <li>Orchestrated cross-functional teams to produce 200+ high-quality visual assets and 50+ viral video reels.</li>
+          <li>Executed and monitored 100+ performance-driven Meta advertising campaigns.</li>
+          <li>Maintained a strict 100% on-time delivery rate for all client project milestones.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-date">APR 2025 — DEC 2025</div>
+        <div class="exp-company">WE360</div>
+      </div>
+      <div class="exp-details">
+        <h4>Social Media Manager</h4>
+        <ul>
+          <li>Managed brand presence and audience growth for 6+ distinct corporate brands.</li>
+          <li>Designed and rolled out 300+ engaging social media posts and reels across Meta and TikTok.</li>
+          <li>Analyzed monthly campaign metrics to iterate and improve audience retention.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-date">AUG 2023 — APR 2025</div>
+        <div class="exp-company">Vibes By MHK</div>
+      </div>
+      <div class="exp-details">
+        <h4>E-Commerce Manager & Web Developer</h4>
+        <ul>
+          <li>Led the deployment of 15+ custom-built WordPress and Shopify e-commerce platforms.</li>
+          <li>Oversaw digital merchandising, maintaining a catalog of over 1,000 active product listings.</li>
+          <li>Streamlined the fulfillment pipeline, ensuring the flawless processing of 1,000+ monthly orders.</li>
+          <li>Implemented fundamental SEO enhancements, significantly boosting organic store traffic.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-card">
+      <div class="exp-meta">
+        <div class="exp-date">JUN 2022 — AUG 2023</div>
+        <div class="exp-company">Leomart</div>
+      </div>
+      <div class="exp-details">
+        <h4>Social Media & Support Executive</h4>
+        <ul>
+          <li>Initiated digital marketing campaigns and managed daily organic content scheduling.</li>
+          <li>Designed 150+ promotional graphics to boost seasonal sales initiatives.</li>
+          <li>Resolved customer inquiries and managed CRM tools to process 300+ customer orders efficiently.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="section">
+  <div class="sec-header">
+    <div class="sec-tag">( 04 ) PORTFOLIO</div>
+    <h2 class="reveal-text">Brands & Platforms Managed.</h2>
+  </div>
+  
+  <div class="filter-wrap">
+    <button class="filter-btn magnetic active" data-tab="social">Brands Managed</button>
+    <button class="filter-btn magnetic" data-tab="web">Websites Developed</button>
+    <button class="filter-btn magnetic" data-tab="creative">Content Creatives</button>
+    <button class="filter-btn magnetic" data-tab="videos">Video Reels</button>
+    <button class="filter-btn magnetic" data-tab="logos">Identity</button>
+    <button class="filter-btn magnetic" data-tab="banners">Banners</button>
+  </div>
+
+  <!-- 1. BRANDS (CLEAN, NO LOGOS, JUST TYPOGRAPHY) -->
+  <div class="port-panel active" id="social">
+    <div class="grid-3" id="brand-grid"></div>
+  </div>
+
+  <!-- 2. WEBSITES (Sleek List Style) -->
+  <div class="port-panel" id="web">
+    <div class="grid-3" id="web-grid"></div>
+  </div>
+
+  <!-- 3. CREATIVES (237) -->
+  <div class="port-panel" id="creative">
+    <div class="grid-4" id="creative-grid"></div>
+  </div>
+
+  <!-- 4. VIDEOS (42) -->
+  <div class="port-panel" id="videos">
+    <div class="grid-3" id="video-grid"></div>
+  </div>
+
+  <!-- 5. LOGOS (8) -->
+  <div class="port-panel" id="logos">
+    <div class="grid-4" id="logo-grid"></div>
+  </div>
+
+  <!-- 6. BANNERS (10) -->
+  <div class="port-panel" id="banners">
+    <div class="grid-4" id="banner-grid"></div>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+  <a href="mailto:abuzaryousaf667@gmail.com" class="huge-text magnetic">HIRE ME</a>
+  <div class="footer-links">
+    <div class="copyright">© 2026 ABUZAR YOUSAF. <br>READY TO JOIN YOUR TEAM.</div>
+    <div class="social-big">
+      <a href="mailto:abuzaryousaf667@gmail.com" class="magnetic">Email</a>
+      <a href="tel:+923302387965" class="magnetic">Phone</a>
+      <a href="https://linkedin.com/in/abuzaryousaf" target="_blank" class="magnetic">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // --- 1. DATA GENERATION (Ensuring 100% Original Content) ---
+  
+  // Brands Data
+  const brands = [
+    { name: "Care Pakistan", ig: "https://www.instagram.com/carepakistanofficial/", fb: "https://www.facebook.com/officialcarepakistan", li: "https://www.linkedin.com/company/carecosmetics/" },
+    { name: "Elite Solutions", ig: "https://www.instagram.com/elitesolutions.pk/", fb: "https://www.facebook.com/elitesolutionspak/", li: "https://www.linkedin.com/company/elitesolutionspk/" },
+    { name: "7Cars UAE", ig: "https://www.instagram.com/7cars.ae", fb: "https://www.facebook.com/7cars.ae" },
+    { name: "Alina Dental", ig: "https://www.instagram.com/alinadentalclinic/", fb: "https://www.facebook.com/Alinadentalclinic/" },
+    { name: "Anaya's Kitchen", ig: "https://www.instagram.com/anayaskitchenlahore/", fb: "https://www.facebook.com/anayaskit" },
+    { name: "Vibes by MHK", ig: "https://www.instagram.com/vibes.bymhk/", fb: "https://www.facebook.com/vibesbymhkofficial", yt: "https://www.youtube.com/@VibesByMHK", tt: "https://www.tiktok.com/@vibes_bymhk" },
+    { name: "Halawa Silk", ig: "https://www.instagram.com/halawasilk/", fb: "https://www.facebook.com/halawasilk/", yt: "https://www.youtube.com/@HalawaSilk", tt: "https://www.tiktok.com/@halawasilk" },
+    { name: "TeeTokyo", ig: "https://www.instagram.com/teetokyo_/", fb: "https://www.facebook.com/profile.php?id=61585456144139" },
+    { name: "Hadaya Homes", ig: "https://www.instagram.com/hadayahomeslahore", fb: "https://www.facebook.com/profile.php?id=100094016972705" },
+    { name: "Robust Pakistan", ig: "https://www.instagram.com/robust.com.pk" },
+    { name: "Blackstone Foods", ig: "https://www.instagram.com/blackstonefoods.pk", fb: "https://www.facebook.com/profile.php?id=61585857871712", li: "https://www.linkedin.com/company/blackstonefoods/" },
+    { name: "Hydrpak", ig: "https://www.instagram.com/hydrpak" },
+    { name: "DextSoft", ig: "https://www.instagram.com/dext.soft/", fb: "https://www.facebook.com/dextsoftt/" },
+    { name: "DMCA Pakistan", ig: "https://www.instagram.com/dmca.pk", fb: "https://www.facebook.com/dmca.pk/" },
+    { name: "BIA Naturals", ig: "https://www.instagram.com/bianaturalsofficial" },
+    { name: "ARY Sportswear", fb: "https://www.facebook.com/arysportswear" },
+    { name: "Ethisol", fb: "https://www.facebook.com/Ethisol.uk/", li: "https://www.linkedin.com/company/ethisol/" },
+    { name: "UmrahKonnect", li: "https://www.linkedin.com/company/umrahkonnect/" },
+    { name: "Hadaya Living", fb: "https://www.facebook.com/hadayaliving" }
+  ];
+  
+  const ytBrands = [
+    { n: "FNF Stories Official", url: "https://www.youtube.com/@FNFStoriesOfficial" },
+    { n: "Storytime by MHK", url: "https://www.youtube.com/@storytimebymhk7553" },
+    { n: "Famous Personalities", url: "https://www.youtube.com/@famouspersonalitiesbymhk5607" },
+    { n: "Tech Review by MHK", url: "https://www.youtube.com/@techreviewbymhk4483" },
+    { n: "Crypto by MHK", url: "https://www.youtube.com/@cryptobymhk4983" },
+    { n: "Interesting Facts", url: "https://www.youtube.com/@interestingfactsbymhk9813" },
+    { n: "Movies by MHK", url: "https://www.youtube.com/@MoviesbyM.H.K-xs5rk" },
+    { n: "Fun Time with MHK", url: "https://www.youtube.com/@funtimewithmhk-yp8tp" },
+    { n: "Islamic Knowledge", url: "https://www.youtube.com/@IslamicKnowledge_0024" },
+    { n: "Online Earning Tips", url: "https://www.youtube.com/@OnlineEarningTipsByMHK" }
+  ];
+  
+  const bGrid = document.getElementById('brand-grid');
+  brands.forEach(b => {
+    let links = '';
+    if(b.ig) links += `<a href="${b.ig}" target="_blank" class="bg-ig magnetic"><i class="ph ph-instagram-logo"></i></a>`;
+    if(b.fb) links += `<a href="${b.fb}" target="_blank" class="bg-fb magnetic"><i class="ph ph-facebook-logo"></i></a>`;
+    if(b.yt) links += `<a href="${b.yt}" target="_blank" class="bg-yt magnetic"><i class="ph ph-youtube-logo"></i></a>`;
+    if(b.tt) links += `<a href="${b.tt}" target="_blank" class="bg-tt magnetic"><i class="ph ph-tiktok-logo"></i></a>`;
+    if(b.li) links += `<a href="${b.li}" target="_blank" class="bg-li magnetic"><i class="ph ph-linkedin-logo"></i></a>`;
+    bGrid.innerHTML += `<div class="brand-card"><div class="bc-head"><h3>${b.name}</h3></div><div class="bc-socials">${links}</div></div>`;
+  });
+  
+  ytBrands.forEach(b => {
+    bGrid.innerHTML += `<div class="brand-card"><div class="bc-head"><h3>${b.n}</h3></div><div class="bc-socials"><a href="${b.url}" target="_blank" class="bg-yt magnetic"><i class="ph ph-youtube-logo"></i></a></div></div>`;
+  });
+
+  // Websites Data
+  const websites = [
+    {n:"ARY Sportswear", l:"https://arysportswear.us"}, {n:"Vibes by MHK", l:"https://vibesbymhk.com"}, {n:"7Cars UAE", l:"https://7cars.ae"},
+    {n:"Halawa Silk", l:"https://halawasilk.pk"}, {n:"TeeTokyo", l:"https://teetokyo.com"}, {n:"Niaz Garments", l:"https://niazgarments.com"},
+    {n:"Stalfy Trading UK", l:"https://stalfytrading.co.uk"}, {n:"Elite Solutions", l:"https://elitesolutions.pk"}, {n:"Care Pakistan", l:"https://carepakistan.com.pk"},
+    {n:"Elite MEP", l:"https://mep.elitesolutions.pk"}, {n:"Kool Vibez", l:"https://koolvibez.com"}, {n:"Beauty Conscious", l:"https://beautyconscious.store"},
+    {n:"DMCA Pakistan", l:"https://dmca.pk/"}, {n:"BIA Naturals", l:"https://www.bianaturals.com/"}, {n:"Blackstone Foods", l:"https://blackstonefoods.com.pk/"},
+    {n:"Candi Skin", l:"https://www.candiskin.com/"}, {n:"Dracuir", l:"https://dracuir.com/"}, {n:"Quadratax", l:"https://quadratax.com/"}
+  ];
+  const wGrid = document.getElementById('web-grid');
+  websites.forEach(w => {
+    wGrid.innerHTML += `<a href="${w.l}" target="_blank" class="web-card hover-target magnetic"><h3>${w.n}</h3><div class="arrow-btn"><i class="ph-bold ph-arrow-up-right"></i></div></a>`;
+  });
+
+  // Heavy Media Setup
+  const generateMedia = (id, count, path, ext, cls, isVid=false) => {
+    const grid = document.getElementById(id);
+    let html = '';
+    for(let i=1; i<=count; i++){
+      if(isVid) {
+        html += `<div class="media-card video"><video src="assets/${path}/${path.slice(0,-1)} (${i}).${ext}" controls playsinline preload="metadata"></video></div>`;
+      } else {
+        html += `<a href="assets/${path}/${path.slice(0,-1)} (${i}).${ext}" target="_blank" class="media-card ${cls}"><img src="assets/${path}/${path.slice(0,-1)} (${i}).${ext}" loading="lazy"></a>`;
+      }
+    }
+    grid.innerHTML = html;
+  };
+  generateMedia('creative-grid', 237, 'creative', 'webp', '');
+  generateMedia('video-grid', 42, 'videos', 'webm', '', true);
+  generateMedia('logo-grid', 8, 'logos', 'webp', 'logo-box');
+  generateMedia('banner-grid', 10, 'banners', 'webp', 'banner');
+
+
+  // --- 2. WORLD CLASS ANIMATIONS (GSAP & LENIS) ---
+  
+  const cursor = document.querySelector('.cursor');
+  const follower = document.querySelector('.cursor-follower');
+  
+  if (window.innerWidth > 768) {
+    window.addEventListener('mousemove', (e) => {
+      gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+      gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.5, ease: "power2.out" });
+    });
+
+    const magnets = document.querySelectorAll('.magnetic');
+    magnets.forEach(mag => {
+      mag.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+      mag.addEventListener('mouseleave', () => {
+        document.body.classList.remove('hovering');
+        gsap.to(mag, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1, 0.3)" });
+      });
+      mag.addEventListener('mousemove', (e) => {
+        const bound = mag.getBoundingClientRect();
+        const x = (e.clientX - bound.left - bound.width/2) * 0.3;
+        const y = (e.clientY - bound.top - bound.height/2) * 0.3;
+        gsap.to(mag, { x: x, y: y, duration: 0.2 });
+      });
+    });
+  }
+
+  // GSAP Initial Loader Sequence
+  const tl = gsap.timeline();
+  tl.to('.loader-bar', { width: '100%', duration: 1.5, ease: "power3.inOut" })
+    .to('.loader-text span', { y: 0, duration: 0.8, ease: "power4.out" }, "-=0.5")
+    .to('.loader', { yPercent: -100, duration: 1, ease: "expo.inOut", delay: 0.3 })
+    .from('.hero-title .line span', { yPercent: 100, duration: 1.2, stagger: 0.1, ease: "expo.out" }, "-=0.5")
+    .from('.hero-subtitle, .hero-desc, .hero-stats', { opacity: 0, y: 30, duration: 1, stagger: 0.2, ease: "power3.out" }, "-=0.8");
+
+  // Register ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Smooth Scroll (Lenis)
+  const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  // Scroll Animations 
+  gsap.utils.toArray('.sec-header').forEach(header => {
+    gsap.from(header, {
+      scrollTrigger: { trigger: header, start: "top 85%" },
+      opacity: 0, y: 40, duration: 1, ease: "power3.out"
+    });
+  });
+
+  // Infinite Marquee Animation
+  gsap.to('.marquee', { xPercent: -50, ease: "none", duration: 15, repeat: -1 });
+
+  // Portfolio Tabs Switching Logic
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.port-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      ScrollTrigger.refresh();
+      setTimeout(() => lenis.resize(), 200);
+    });
+  });
+
+  // Video Auto Thumbnail Gen
+  setTimeout(() => {
+    document.querySelectorAll('.video-card video').forEach(v => {
+      v.addEventListener('loadedmetadata', () => { v.currentTime = v.duration ? v.duration/2 : 1; });
+      v.addEventListener('seeked', function os(){
+        v.removeEventListener('seeked', os);
+        try{
+          const c=document.createElement('canvas'); c.width=v.videoWidth; c.height=v.videoHeight;
+          c.getContext('2d').drawImage(v,0,0,c.width,c.height); v.poster=c.toDataURL();
+        }catch(e){}
+        v.currentTime=0;
+      });
+    });
+  }, 1000);
+</script>
+
+</body>
+</html>

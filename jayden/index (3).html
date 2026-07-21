@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abuzar Yousaf — Elite Social Media Architect</title>
+
+<!-- World-Class Typography: Syne for massive display headings, Manrope for ultra-clean readable body -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Ultra-Modern Icons: Phosphor Icons (The current industry standard for high-end UI) -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+<!-- Smooth Scrolling Engine (Lenis) for that buttery premium feel -->
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+
+<style>
+  :root {
+    --bg-color: #050505;
+    --text-main: #FFFFFF;
+    --text-muted: #888888;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --accent: #E5FF00; /* High-fashion neon lime accent */
+    --hover-bg: rgba(255, 255, 255, 0.03);
+  }
+
+  /* Reset & Base */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  html {
+    background-color: var(--bg-color);
+    /* Hide default cursor on desktop for custom cursor */
+    cursor: none;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-muted);
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Cinematic Film Grain Noise Overlay */
+  .noise {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; z-index: 9999; opacity: 0.04;
+    background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+  }
+
+  /* Custom Cursor */
+  .cursor-dot, .cursor-outline {
+    position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+    border-radius: 50%; z-index: 99999; pointer-events: none;
+  }
+  .cursor-dot { width: 8px; height: 8px; background-color: var(--accent); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+  .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(229, 255, 0, 0.5); transition: transform 0.1s ease-out, width 0.2s, height 0.2s; }
+  .cursor-hover .cursor-dot { width: 60px; height: 60px; background-color: var(--text-main); mix-blend-mode: difference; }
+  .cursor-hover .cursor-outline { opacity: 0; }
+
+  /* Typography */
+  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; color: var(--text-main); font-weight: 700; text-transform: uppercase; line-height: 1.1; }
+  
+  a { color: inherit; text-decoration: none; display: inline-block; cursor: none; }
+  
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 4vw; }
+
+  /* Section Spacing */
+  section { padding: 10vw 0; border-bottom: 1px solid var(--border-color); }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed; top: 2vw; left: 50%; transform: translateX(-50%);
+    background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color); border-radius: 100px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 24px; width: 92vw; max-width: 1200px; z-index: 100;
+  }
+  .nav-brand { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
+  .nav-brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 3vw; list-style: none; }
+  .nav-links a { font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--text-main); }
+  .nav-cta {
+    background: var(--text-main); color: var(--bg-color); padding: 10px 24px; border-radius: 100px;
+    font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--accent); }
+  .menu-btn { display: none; color: var(--text-main); font-size: 1.5rem; }
+
+  /* ---------- HERO ---------- */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding-top: 10vw; border-bottom: none; }
+  .hero-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 2vw; display: flex; align-items: center; gap: 10px; }
+  .hero-label i { font-size: 1.2rem; }
+  .hero-title { font-size: clamp(3rem, 10vw, 9rem); font-weight: 800; letter-spacing: -0.04em; margin-left: -0.5vw; }
+  .hero-title span { color: transparent; -webkit-text-stroke: 1px var(--text-main); display: block; }
+  
+  .hero-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; margin-top: 5vw; align-items: end; }
+  .hero-bio { font-size: clamp(1.1rem, 1.5vw, 1.5rem); max-width: 40ch; font-weight: 300; }
+  .hero-image-wrap { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; border-radius: 1vw; }
+  .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: filter 0.8s, transform 0.8s; }
+  .hero-image-wrap:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+  /* ---------- INFINITE MARQUEE (STATS) ---------- */
+  .marquee-section { padding: 3vw 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); overflow: hidden; background: var(--accent); color: var(--bg-color); }
+  .marquee { display: flex; white-space: nowrap; animation: marquee 25s linear infinite; }
+  .marquee span { font-family: 'Syne', sans-serif; font-size: 3vw; font-weight: 700; text-transform: uppercase; padding: 0 2vw; display: inline-flex; align-items: center; gap: 2vw; }
+  .marquee span i { font-size: 2.5vw; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ---------- SECTION HEADER (Editorial Style) ---------- */
+  .sec-header { display: grid; grid-template-columns: 1fr 2fr; gap: 4vw; margin-bottom: 6vw; }
+  .sec-num { font-family: 'Manrope'; font-size: 1rem; color: var(--text-muted); }
+  .sec-title { font-size: clamp(2rem, 5vw, 4.5rem); letter-spacing: -0.03em; }
+
+  /* ---------- ABOUT ---------- */
+  .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; }
+  .about-text p { font-size: clamp(1.1rem, 1.5vw, 1.5rem); margin-bottom: 2vw; font-weight: 300; }
+  .about-text p b { color: var(--text-main); font-weight: 500; }
+  
+  .list-editorial { list-style: none; border-top: 1px solid var(--border-color); }
+  .list-editorial li { display: flex; justify-content: space-between; padding: 1.5vw 0; border-bottom: 1px solid var(--border-color); font-size: 1.1rem; }
+  .list-editorial li span { color: var(--text-main); font-family: 'Syne', sans-serif; font-weight: 600; text-transform: uppercase; }
+
+  /* ---------- SERVICES ---------- */
+  .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border-color); border: 1px solid var(--border-color); }
+  .service-item { background: var(--bg-color); padding: 4vw; transition: background 0.4s; }
+  .service-item:hover { background: var(--hover-bg); }
+  .service-item i { font-size: 3rem; color: var(--text-main); margin-bottom: 2vw; display: block; }
+  .service-item h3 { font-size: 2rem; margin-bottom: 1vw; }
+  .service-item p { font-size: 1.1rem; }
+
+  /* ---------- EXPERIENCE (Tabular Editorial) ---------- */
+  .exp-table { width: 100%; border-top: 1px solid var(--border-color); }
+  .exp-row { display: grid; grid-template-columns: 0.5fr 2fr 1fr; align-items: center; padding: 3vw 0; border-bottom: 1px solid var(--border-color); transition: all 0.4s; position: relative; }
+  .exp-row:hover { padding-left: 2vw; padding-right: 2vw; background: rgba(255,255,255,0.02); }
+  .exp-date { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+  .exp-company { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); color: var(--text-main); font-weight: 700; display: flex; align-items: center; gap: 20px; }
+  .exp-company img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); transition: 0.3s; }
+  .exp-row:hover .exp-company img { filter: grayscale(0%); transform: scale(1.1); }
+  .exp-role { text-align: right; font-size: 1.1rem; }
+
+  /* ---------- PORTFOLIO ---------- */
+  .port-filters { display: flex; gap: 1vw; margin-bottom: 4vw; flex-wrap: wrap; }
+  .filter-btn {
+    background: transparent; border: 1px solid var(--border-color); color: var(--text-muted);
+    padding: 12px 32px; border-radius: 100px; font-family: 'Manrope'; font-size: 0.9rem; text-transform: uppercase;
+    letter-spacing: 1px; cursor: none; transition: all 0.4s;
+  }
+  .filter-btn:hover { border-color: var(--text-main); color: var(--text-main); }
+  .filter-btn.active { background: var(--text-main); color: var(--bg-color); border-color: var(--text-main); font-weight: 600; }
+  
+  .port-panel { display: none; }
+  .port-panel.active { display: block; animation: fadeUp 0.6s ease forwards; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* World-Class Grid */
+  .premium-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2vw; }
+  
+  /* Brand Card */
+  .brand-card {
+    border: 1px solid var(--border-color); border-radius: 1vw; padding: 3vw;
+    display: flex; flex-direction: column; gap: 2vw; transition: all 0.5s; background: rgba(255,255,255,0.01);
+  }
+  .brand-card:hover { border-color: var(--text-main); transform: translateY(-10px); }
+  .brand-card .head { display: flex; align-items: center; gap: 1.5vw; }
+  .brand-card img.logo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+  .brand-card h3 { font-size: 1.5rem; text-transform: none; }
+  .brand-socials { display: flex; gap: 10px; flex-wrap: wrap; }
+  .brand-socials a {
+    width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--border-color);
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    transition: all 0.3s;
+  }
+  .brand-socials a:hover { background: var(--text-main); color: var(--bg-color); border-color: var(--text-main); transform: scale(1.1); }
+
+  /* Media Card (Images/Videos) */
+  .media-card { position: relative; overflow: hidden; border-radius: 1vw; aspect-ratio: 4/5; background: #111; }
+  .media-card img, .media-card video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .media-card:hover img, .media-card:hover video { transform: scale(1.05); }
+  .media-card.video { aspect-ratio: 9/16; }
+  .media-card.banner { aspect-ratio: 16/9; grid-column: span 2; }
+  @media(max-width: 768px) { .media-card.banner { grid-column: span 1; } }
+  
+  .media-overlay {
+    position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    opacity: 0; transition: opacity 0.4s; display: flex; align-items: flex-end; padding: 2vw;
+  }
+  .media-card:hover .media-overlay { opacity: 1; }
+  .media-overlay i { color: var(--text-main); font-size: 2rem; }
+
+  .logo-card { aspect-ratio: 1/1; background: #FFF; padding: 2vw; display: flex; align-items: center; justify-content: center; border-radius: 1vw; }
+  .logo-card img { width: 100%; height: 100%; object-fit: contain; filter: grayscale(100%); transition: 0.5s; }
+  .logo-card:hover img { filter: grayscale(0%); transform: scale(1.1); }
+
+  /* ---------- CONTACT (Massive Footer) ---------- */
+  .contact-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; border-bottom: none; padding-bottom: 2vw; }
+  .huge-text { font-family: 'Syne', sans-serif; font-size: clamp(4rem, 14vw, 15rem); font-weight: 800; line-height: 0.9; color: var(--text-main); text-align: center; margin: 10vw 0; transition: color 0.4s; }
+  .huge-text:hover { color: var(--accent); }
+  
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 2vw; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+  .social-links { display: flex; gap: 2vw; }
+  .social-links a { font-size: 1.5rem; transition: color 0.3s; }
+  .social-links a:hover { color: var(--text-main); }
+
+  /* SCROLL REVEAL */
+  .rev { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .rev.active { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .menu-btn { display: block; }
+    .hero-bottom { grid-template-columns: 1fr; }
+    .sec-header { grid-template-columns: 1fr; gap: 2vw; margin-bottom: 10vw; }
+    .about-content { grid-template-columns: 1fr; }
+    .service-grid { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; gap: 2vw; padding: 6vw 0; }
+    .exp-role { text-align: left; color: var(--text-muted); }
+    .footer-bottom { flex-direction: column; gap: 4vw; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Noise Overlay for Cinematic Texture -->
+<div class="noise"></div>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-outline" id="cursor-outline"></div>
+
+<nav>
+  <a href="#" class="nav-brand hover-target">A.Yousaf<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about" class="hover-target">About</a></li>
+    <li><a href="#services" class="hover-target">Services</a></li>
+    <li><a href="#experience" class="hover-target">Experience</a></li>
+    <li><a href="#portfolio" class="hover-target">Work</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta hover-target">Let's Talk <i class="ph ph-arrow-up-right"></i></a>
+  <i class="ph ph-list menu-btn"></i>
+</nav>
+
+<section class="hero container" id="home">
+  <div class="hero-label rev"><i class="ph-fill ph-sparkle"></i> Available for worldwide opportunities</div>
+  <h1 class="hero-title rev">ELITE SOCIAL <br><span>ARCHITECT.</span></h1>
+  
+  <div class="hero-bottom">
+    <div class="hero-image-wrap rev">
+      <!-- Make sure this image is high quality and moody if possible -->
+      <img src="assets/abuzar-photo.webp" alt="Abuzar Yousaf">
+    </div>
+    <div class="hero-bio rev">
+      <p>I engineer digital dominance. Managing <b>40+ elite brand accounts</b>, building <b>50+ high-converting websites</b>, and directing e-commerce pipelines with surgical precision. <br><br>I don't just post content; I build scalable digital ecosystems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Infinite Marquee replacing basic stats -->
+<div class="marquee-section">
+  <div class="marquee">
+    <span>4+ YEARS EXPERIENCE <i class="ph-fill ph-star-four"></i> 40+ BRAND ACCOUNTS <i class="ph-fill ph-star-four"></i> 50+ WEBSITES LAUNCHED <i class="ph-fill ph-star-four"></i> 100+ DAILY ORDERS <i class="ph-fill ph-star-four"></i> 100% DELIVERY RATE <i class="ph-fill ph-star-four"></i></span>
+    <span>4+ YEARS EXPERIENCE <i class="ph-fill ph-star-four"></i> 40+ BRAND ACCOUNTS <i class="ph-fill ph-star-four"></i> 50+ WEBSITES LAUNCHED <i class="ph-fill ph-star-four"></i> 100+ DAILY ORDERS <i class="ph-fill ph-star-four"></i> 100% DELIVERY RATE <i class="ph-fill ph-star-four"></i></span>
+  </div>
+</div>
+
+<section id="about" class="container">
+  <div class="sec-header rev">
+    <div class="sec-num">( 01 )</div>
+    <h2 class="sec-title">The Machine Behind The Content.</h2>
+  </div>
+  <div class="about-content">
+    <div class="about-text rev">
+      <p>Starting at Leomart, I realized that true social media management isn't just about pretty pictures—it's about <b>system architecture</b>. I now handle 10+ clients simultaneously across Meta, LinkedIn, and TikTok without missing a beat.</p>
+      <p>My edge? I am a hybrid. Beyond content strategy and Meta Ads, I possess deep technical fluency in <b>WordPress & Shopify development</b>. I build the very platforms I drive traffic to, creating a seamless, high-converting loop.</p>
+    </div>
+    <div class="about-lists rev">
+      <ul class="list-editorial">
+        <li>Languages <span>EN / UR / PA / HI</span></li>
+        <li>BS Software Engineering <span>Virtual University</span></li>
+        <li>Pre-Engineering <span>Punjab College</span></li>
+        <li>Location <span>Lahore, PK</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="container">
+  <div class="sec-header rev">
+    <div class="sec-num">( 02 )</div>
+    <h2 class="sec-title">Capabilities.</h2>
+  </div>
+  <div class="service-grid rev">
+    <div class="service-item hover-target">
+      <i class="ph-light ph-users-three"></i>
+      <h3>Social Ecosystems</h3>
+      <p>End-to-end management, community building, and algorithmic growth strategies across all major platforms.</p>
+    </div>
+    <div class="service-item hover-target">
+      <i class="ph-light ph-bezier-curve"></i>
+      <h3>Creative Direction</h3>
+      <p>Producing 200+ high-end designs and engaging short-form video reels that capture and hold attention.</p>
+    </div>
+    <div class="service-item hover-target">
+      <i class="ph-light ph-target"></i>
+      <h3>Meta Ads & Growth</h3>
+      <p>Executing precision-targeted paid campaigns (100+ launched) that translate views into measurable ROI.</p>
+    </div>
+    <div class="service-item hover-target">
+      <i class="ph-light ph-shopping-cart"></i>
+      <h3>E-Com Architecture</h3>
+      <p>Developing 50+ Shopify/WP sites and managing complex operations for 100+ daily orders.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="container">
+  <div class="sec-header rev">
+    <div class="sec-num">( 03 )</div>
+    <h2 class="sec-title">The Record.</h2>
+  </div>
+  <div class="exp-table rev">
+    <a href="#" class="exp-row hover-target">
+      <div class="exp-date">2025 — 2026</div>
+      <div class="exp-company"><img src="company-logos/ethisol.webp" onerror="this.style.display='none'"> Ethisol</div>
+      <div class="exp-role">Social & Project Manager<br>10+ Clients / 100+ Campaigns</div>
+    </a>
+    <a href="#" class="exp-row hover-target">
+      <div class="exp-date">2025 — 2025</div>
+      <div class="exp-company"><img src="company-logos/we360.webp" onerror="this.style.display='none'"> WE360</div>
+      <div class="exp-role">Social Media Executive<br>300+ Creatives / Brand Scaling</div>
+    </a>
+    <a href="#" class="exp-row hover-target">
+      <div class="exp-date">2023 — 2025</div>
+      <div class="exp-company"><img src="company-logos/vibes-by-mhk.webp" onerror="this.style.display='none'"> Vibes By MHK</div>
+      <div class="exp-role">E-Commerce & WP Exec<br>15+ Sites / 1k+ Orders Mo.</div>
+    </a>
+    <a href="#" class="exp-row hover-target">
+      <div class="exp-date">2022 — 2023</div>
+      <div class="exp-company"><img src="company-logos/leomart.webp" onerror="this.style.display='none'"> Leomart</div>
+      <div class="exp-role">Social Media & Support<br>Customer Ops & Content</div>
+    </a>
+  </div>
+</section>
+
+<section id="portfolio" class="container">
+  <div class="sec-header rev">
+    <div class="sec-num">( 04 )</div>
+    <h2 class="sec-title">Selected Works.</h2>
+  </div>
+  
+  <div class="port-filters rev">
+    <button class="filter-btn active hover-target" data-tab="social">Brands</button>
+    <button class="filter-btn hover-target" data-tab="web">Websites</button>
+    <button class="filter-btn hover-target" data-tab="creative">Creatives</button>
+    <button class="filter-btn hover-target" data-tab="videos">Reels</button>
+    <button class="filter-btn hover-target" data-tab="logos">Identity</button>
+    <button class="filter-btn hover-target" data-tab="banners">Banners</button>
+  </div>
+
+  <!-- 1. BRANDS (Social Media) -->
+  <div class="port-panel active" id="social">
+    <div class="premium-grid">
+      <!-- Care Pakistan -->
+      <div class="brand-card">
+        <div class="head">
+          <img src="company-logos/care-pakistan-official.webp" class="logo" onerror="this.style.display='none'">
+          <h3>Care Pakistan</h3>
+        </div>
+        <div class="brand-socials">
+          <a href="https://www.instagram.com/carepakistanofficial/" class="hover-target" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.facebook.com/officialcarepakistan" class="hover-target" target="_blank"><i class="ph ph-facebook-logo"></i></a>
+          <a href="https://www.linkedin.com/company/carecosmetics/" class="hover-target" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+      <!-- Elite Solutions -->
+      <div class="brand-card">
+        <div class="head">
+          <img src="company-logos/elite-solutions.webp" class="logo" onerror="this.style.display='none'">
+          <h3>Elite Solutions</h3>
+        </div>
+        <div class="brand-socials">
+          <a href="https://www.instagram.com/elitesolutions.pk/" class="hover-target" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.facebook.com/elitesolutionspak/" class="hover-target" target="_blank"><i class="ph ph-facebook-logo"></i></a>
+          <a href="https://www.linkedin.com/company/elitesolutionspk/" class="hover-target" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+      <!-- Vibes By MHK -->
+      <div class="brand-card">
+        <div class="head">
+          <img src="company-logos/vibes-by-mhk.webp" class="logo" onerror="this.style.display='none'">
+          <h3>Vibes by MHK</h3>
+        </div>
+        <div class="brand-socials">
+          <a href="https://www.instagram.com/vibes.bymhk/" class="hover-target" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.facebook.com/vibesbymhkofficial" class="hover-target" target="_blank"><i class="ph ph-facebook-logo"></i></a>
+          <a href="https://www.youtube.com/@VibesByMHK" class="hover-target" target="_blank"><i class="ph ph-youtube-logo"></i></a>
+          <a href="https://www.tiktok.com/@vibes_bymhk" class="hover-target" target="_blank"><i class="ph ph-tiktok-logo"></i></a>
+        </div>
+      </div>
+      <!-- Halawa Silk -->
+      <div class="brand-card">
+        <div class="head">
+          <img src="company-logos/halawa-silk.webp" class="logo" onerror="this.style.display='none'">
+          <h3>Halawa Silk</h3>
+        </div>
+        <div class="brand-socials">
+          <a href="https://www.instagram.com/halawasilk/" class="hover-target" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.facebook.com/halawasilk/" class="hover-target" target="_blank"><i class="ph ph-facebook-logo"></i></a>
+          <a href="https://www.youtube.com/@HalawaSilk" class="hover-target" target="_blank"><i class="ph ph-youtube-logo"></i></a>
+          <a href="https://www.tiktok.com/@halawasilk" class="hover-target" target="_blank"><i class="ph ph-tiktok-logo"></i></a>
+        </div>
+      </div>
+      <!-- Ethisol -->
+      <div class="brand-card">
+        <div class="head">
+          <img src="company-logos/ethisol.webp" class="logo" onerror="this.style.display='none'">
+          <h3>Ethisol</h3>
+        </div>
+        <div class="brand-socials">
+          <a href="https://www.facebook.com/Ethisol.uk/" class="hover-target" target="_blank"><i class="ph ph-facebook-logo"></i></a>
+          <a href="https://www.linkedin.com/company/ethisol/" class="hover-target" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+        </div>
+      </div>
+      <!-- 7Cars UAE -->
+      <div class="brand-card">
+        <div class="head">
+          <img src="company-logos/7cars-uae.webp" class="logo" onerror="this.style.display='none'">
+          <h3>7Cars UAE</h3>
+        </div>
+        <div class="brand-socials">
+          <a href="https://www.instagram.com/7cars.ae" class="hover-target" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+          <a href="https://www.facebook.com/7cars.ae" class="hover-target" target="_blank"><i class="ph ph-facebook-logo"></i></a>
+        </div>
+      </div>
+      
+      <!-- Generated rest of the social cards to save space but retain complete structure -->
+      <script>
+        const extraBrands = [
+          {name: "Alina Dental", img: "alina-dental-clinic.webp", ig: "https://www.instagram.com/alinadentalclinic/", fb: "https://www.facebook.com/Alinadentalclinic/"},
+          {name: "Anaya's Kitchen", img: "anayas-kitchen-lahore.webp", ig: "https://www.instagram.com/anayaskitchenlahore/", fb: "https://www.facebook.com/anayaskit"},
+          {name: "TeeTokyo", img: "teetokyo.webp", ig: "https://www.instagram.com/teetokyo_/", fb: "https://www.facebook.com/profile.php?id=61585456144139"},
+          {name: "Hadaya Homes", img: "hadaya-homes-lahore.webp", ig: "https://www.instagram.com/hadayahomeslahore", fb: "https://www.facebook.com/profile.php?id=100094016972705"},
+          {name: "Blackstone Foods", img: "blackstone-foods.webp", ig: "https://www.instagram.com/blackstonefoods.pk", fb: "https://www.facebook.com/profile.php?id=61585857871712", li: "https://www.linkedin.com/company/blackstonefoods/"},
+          {name: "Robust Pakistan", img: "robust-pakistan.webp", ig: "https://www.instagram.com/robust.com.pk"},
+          {name: "Hydrpak", img: "hydrpak.webp", ig: "https://www.instagram.com/hydrpak"},
+          {name: "DextSoft", img: "dextsoft.webp", ig: "https://www.instagram.com/dext.soft/", fb: "https://www.facebook.com/dextsoftt/"},
+          {name: "DMCA Pakistan", img: "dmca-pakistan.webp", ig: "https://www.instagram.com/dmca.pk", fb: "https://www.facebook.com/dmca.pk/"},
+          {name: "BIA Naturals", img: "bia-naturals.webp", ig: "https://www.instagram.com/bianaturalsofficial"},
+          {name: "ARY Sportswear", img: "ary-sportswear.webp", fb: "https://www.facebook.com/arysportswear"},
+          {name: "UmrahKonnect", img: "umrahkonnect.webp", li: "https://www.linkedin.com/company/umrahkonnect/"},
+          {name: "Hadaya Living", img: "hadaya-living.webp", fb: "https://www.facebook.com/hadayaliving"}
+        ];
+        // And the YT channels
+        const ytBrands = ["fnf-stories-official", "storytime-by-mhk", "famous-personalities-by-mhk", "tech-review-by-mhk", "crypto-by-mhk", "interesting-facts-by-mhk", "movies-by-mhk", "fun-time-with-mhk", "islamic-knowledge", "online-earning-tips-by-mhk"];
+        
+        const socialGrid = document.getElementById('social').querySelector('.premium-grid');
+        extraBrands.forEach(b => {
+          let html = `<div class="brand-card"><div class="head"><img src="company-logos/${b.img}" class="logo" onerror="this.style.display='none'"><h3>${b.name}</h3></div><div class="brand-socials">`;
+          if(b.ig) html += `<a href="${b.ig}" class="hover-target" target="_blank"><i class="ph ph-instagram-logo"></i></a>`;
+          if(b.fb) html += `<a href="${b.fb}" class="hover-target" target="_blank"><i class="ph ph-facebook-logo"></i></a>`;
+          if(b.li) html += `<a href="${b.li}" class="hover-target" target="_blank"><i class="ph ph-linkedin-logo"></i></a>`;
+          html += `</div></div>`;
+          socialGrid.innerHTML += html;
+        });
+        ytBrands.forEach(b => {
+          let name = b.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+          socialGrid.innerHTML += `<div class="brand-card"><div class="head"><img src="company-logos/${b}.webp" class="logo" onerror="this.style.display='none'"><h3>${name}</h3></div><div class="brand-socials"><a href="#" class="hover-target"><i class="ph ph-youtube-logo"></i></a></div></div>`;
+        });
+      </script>
+    </div>
+  </div>
+
+  <!-- 2. WEBSITES -->
+  <div class="port-panel" id="web">
+    <div class="premium-grid">
+      <a class="brand-card hover-target" href="https://arysportswear.us" target="_blank">
+        <div class="head"><h3>ARY Sportswear</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div>
+      </a>
+      <a class="brand-card hover-target" href="https://vibesbymhk.com" target="_blank"><div class="head"><h3>Vibes by MHK</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://7cars.ae" target="_blank"><div class="head"><h3>7Cars UAE</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://halawasilk.pk" target="_blank"><div class="head"><h3>Halawa Silk</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://teetokyo.com" target="_blank"><div class="head"><h3>TeeTokyo</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://niazgarments.com" target="_blank"><div class="head"><h3>Niaz Garments</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://stalfytrading.co.uk" target="_blank"><div class="head"><h3>Stalfy Trading UK</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://elitesolutions.pk" target="_blank"><div class="head"><h3>Elite Solutions</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://carepakistan.com.pk" target="_blank"><div class="head"><h3>Care Pakistan</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://dmca.pk/" target="_blank"><div class="head"><h3>DMCA Pakistan</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://www.bianaturals.com/" target="_blank"><div class="head"><h3>BIA Naturals</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+      <a class="brand-card hover-target" href="https://blackstonefoods.com.pk/" target="_blank"><div class="head"><h3>Blackstone Foods</h3> <i class="ph-light ph-arrow-up-right" style="margin-left:auto; font-size:1.5rem; color:var(--accent);"></i></div></a>
+    </div>
+  </div>
+
+  <!-- 3. CREATIVES (JS Loop for all 237) -->
+  <div class="port-panel" id="creative">
+    <div class="premium-grid" id="creative-grid"></div>
+  </div>
+
+  <!-- 4. VIDEOS (JS Loop for all 42) -->
+  <div class="port-panel" id="videos">
+    <div class="premium-grid" id="video-grid"></div>
+  </div>
+
+  <!-- 5. LOGOS -->
+  <div class="port-panel" id="logos">
+    <div class="premium-grid" id="logo-grid"></div>
+  </div>
+
+  <!-- 6. BANNERS -->
+  <div class="port-panel" id="banners">
+    <div class="premium-grid" id="banner-grid"></div>
+  </div>
+
+  <script>
+    // Extremely efficient native JS loops to generate the heavy UI without cluttering HTML
+    const creativeGrid = document.getElementById('creative-grid');
+    let cHTML = '';
+    for(let i=1; i<=237; i++){
+      cHTML += `<a class="media-card hover-target" href="assets/creative/creative (${i}).webp" target="_blank">
+                  <img src="assets/creative/creative (${i}).webp" loading="lazy">
+                  <div class="media-overlay"><i class="ph-light ph-eye"></i></div>
+                </a>`;
+    }
+    creativeGrid.innerHTML = cHTML;
+
+    const videoGrid = document.getElementById('video-grid');
+    let vHTML = '';
+    for(let i=1; i<=42; i++){
+      vHTML += `<div class="media-card video">
+                  <video src="assets/videos/video (${i}).webm" controls playsinline preload="metadata"></video>
+                </div>`;
+    }
+    videoGrid.innerHTML = vHTML;
+
+    const logoGrid = document.getElementById('logo-grid');
+    let lHTML = '';
+    for(let i=1; i<=8; i++){
+      lHTML += `<a class="logo-card hover-target" href="assets/logos/logo (${i}).webp" target="_blank">
+                  <img src="assets/logos/logo (${i}).webp" loading="lazy">
+                </a>`;
+    }
+    logoGrid.innerHTML = lHTML;
+
+    const bannerGrid = document.getElementById('banner-grid');
+    let bHTML = '';
+    for(let i=1; i<=10; i++){
+      bHTML += `<a class="media-card banner hover-target" href="assets/banners/banner (${i}).webp" target="_blank">
+                  <img src="assets/banners/banner (${i}).webp" loading="lazy">
+                  <div class="media-overlay"><i class="ph-light ph-eye"></i></div>
+                </a>`;
+    }
+    bannerGrid.innerHTML = bHTML;
+  </script>
+
+</section>
+
+<!-- Contact (Giant Typography Edition) -->
+<section id="contact" class="contact-section container">
+  <div class="sec-header rev" style="margin-bottom:0;">
+    <div class="sec-num">( 05 )</div>
+    <h2 class="sec-title">Let's scale your brand.</h2>
+  </div>
+  
+  <a href="mailto:abuzaryousaf667@gmail.com" class="huge-text hover-target rev">LET'S<br>TALK.</a>
+  
+  <div class="footer-bottom rev">
+    <div>© 2026 Abuzar Yousaf. All rights reserved.</div>
+    <div class="social-links">
+      <a href="mailto:abuzaryousaf667@gmail.com" class="hover-target" title="Email"><i class="ph ph-envelope-simple"></i></a>
+      <a href="tel:+923302387965" class="hover-target" title="Phone"><i class="ph ph-phone"></i></a>
+      <a href="https://linkedin.com/in/abuzaryousaf" class="hover-target" target="_blank" title="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+    </div>
+    <div>Lahore, Pakistan</div>
+  </div>
+</section>
+
+<script>
+  // 1. Smooth Scroll Engine (Lenis)
+  const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+
+  // 2. Custom Cursor Logic
+  const cursorDot = document.getElementById('cursor-dot');
+  const cursorOutline = document.getElementById('cursor-outline');
+  window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX; const posY = e.clientY;
+    cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+    cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+  });
+  
+  // Cursor Hover effects
+  document.querySelectorAll('.hover-target, a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  // 3. Scroll Reveal Animations
+  const revealElements = document.querySelectorAll('.rev');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // 4. Portfolio Tabs
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.port-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      // trigger Lenis update since DOM height changed
+      setTimeout(() => { lenis.resize(); }, 100);
+    });
+  });
+
+  // 5. Video Auto-Thumbnail
+  setTimeout(() => {
+    document.querySelectorAll('.video-card video').forEach(video => {
+      video.addEventListener('loadedmetadata', function onMeta(){
+        video.removeEventListener('loadedmetadata', onMeta);
+        video.currentTime = video.duration ? video.duration / 2 : 1;
+      });
+      video.addEventListener('seeked', function onSeeked(){
+        video.removeEventListener('seeked', onSeeked);
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+          canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+          video.poster = canvas.toDataURL('image/jpeg', 0.82);
+        } catch(e) {}
+        video.currentTime = 0;
+      });
+    });
+  }, 1000);
+</script>
+
+</body>
+</html>
